@@ -11,7 +11,8 @@
     "start:dev": "npm run start -- --watch",
     "format": "prettier --write 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix --ext .ts",
-    "lint": "eslint 'src/**/*.ts' --ext .ts",
+    "lint": "eslint 'src/**/*.ts' --ext .ts || npm run --silent hook-errors",
+    "hook-errors": "echo '\\x1b[31mThe build failed because a Forge UI hook is being used incorrectly. Forge UI hooks follow the same rules as React Hooks but have their own API definitions. See the Forge documentation for details on how to use Forge UI hooks.\n' && exit 1",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "docker:build": "docker build -t node-typescript-starter .",
@@ -35,5 +36,8 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "vitest": "^0.30.1"
+  },
+  "dependencies": {
+    "@forge/ui": "^1.9.0"
   }
 }
