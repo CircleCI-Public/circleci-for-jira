@@ -5,13 +5,14 @@
     },
     /* Language and Environment */
     "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "sourceMap": true,
     /* Modules */
     "module": "ES2022" /* Specify what module code is generated. */,
     "rootDir": "./src" /* Specify the root folder within your source files. */,
     "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
     "resolveJsonModule": true /* Enable importing .json files. */,
     "allowJs": false /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
-    "jsx": "preserve",
+    "jsx": "react",
     /* Emit */
     "outDir": "./dist" /* Specify an output folder for all emitted files. */,
     /* Interop Constraints */
@@ -24,7 +25,9 @@
     "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */,
     "noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
     /* Completeness */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "lib": ["dom", "dom.iterable"],
+    "types": ["node", "jest"]
   },
   "include": ["src/**/*.ts", "src/app.jsx"],
   "exclude": ["node_modules", "dist"]
