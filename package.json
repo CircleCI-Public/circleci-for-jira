@@ -14,9 +14,7 @@
     "lint": "eslint 'src/**/*.ts' --ext .ts || npm run --silent hook-errors",
     "hook-errors": "echo '\\x1b[31mThe build failed because a Forge UI hook is being used incorrectly. Forge UI hooks follow the same rules as React Hooks but have their own API definitions. See the Forge documentation for details on how to use Forge UI hooks.\n' && exit 1",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "docker:build": "docker build -t node-typescript-starter .",
-    "docker:run": "docker run -p 3000:3000 node-typescript-starter"
+    "coverage": "vitest run --coverage"
   },
   "prepare": "npm run build",
   "author": "techsquidtv",

@@ -1,8 +1,0 @@
-services:
-  node-typescript-starter:
-    image: node-typescript-starter
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
