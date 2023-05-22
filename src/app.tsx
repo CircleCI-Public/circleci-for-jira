@@ -1,4 +1,4 @@
-import ForgeUI, { render, Fragment, Text, IssuePanel } from '@forge/ui';
+import { render, Fragment, Text, IssuePanel } from '@forge/ui';
 
 const App = () => {
   return (
@@ -11,5 +11,5 @@ const App = () => {
 export const run = render(
   <IssuePanel actions={[]}>
     <App />
-  </IssuePanel>
+  </IssuePanel>,
 );
