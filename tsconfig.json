@@ -27,7 +27,7 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": ["dom", "dom.iterable"],
-    "types": ["node", "jest"]
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/app.tsx"],
   "exclude": ["node_modules", "dist"]
