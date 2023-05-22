@@ -2,7 +2,7 @@ modules:
   jira:issuePanel:
     - key: circleci-for-jira-hello-world-panel
       function: main
-      title: circleci-for-jira
+      title: CircleCI for Jira
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
   function:
     - key: main
@@ -12,6 +12,6 @@ modules:
       homeUrl:
       logoUrl:
       name:
-        value: Jenkins for Jira
+        value: CircleCI for Jira
 app:
   id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
