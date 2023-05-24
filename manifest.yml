@@ -1,17 +1,9 @@
 modules:
-  jira:issuePanel:
-    - key: circleci-for-jira-hello-world-panel
-      function: main
-      title: CircleCI for Jira
-      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+  webtrigger:
+    - key: orb-webtrigger
+      function: handle-orb-request
   function:
-    - key: main
-      handler: index.run
-  devops:buildInfoProvider:
-    - key: build-info-provider
-      homeUrl:
-      logoUrl:
-      name:
-        value: CircleCI for Jira
+    - key: handle-orb-request
+      handler: index.handleOrbRequest
 app:
   id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
