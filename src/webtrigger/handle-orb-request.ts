@@ -12,8 +12,8 @@ export async function handleOrbRequest(
     validateRequest(request);
 
     const cloudId = extractCloudIdFromContext(context);
-    const reqBody: unknown = JSON.parse(request.body);
-    const endpoint = resolveEndpoint(reqBody);
+    const payload: unknown = JSON.parse(request.body);
+    const endpoint = resolveEndpoint(payload);
     const url = `/jira/${endpoint}/0.1/cloud/${cloudId}/bulk`;
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -24,7 +24,7 @@ export async function handleOrbRequest(
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(reqBody),
+      body: JSON.stringify(payload),
     });
 
     return buildResponse(
@@ -32,7 +32,7 @@ export async function handleOrbRequest(
         jiraResponse: await response.json(),
         jiraRequestEndpoint: url,
         cloudId,
-        requestBody: reqBody,
+        jiraRequestBody: payload,
       },
       response.status,
     );
