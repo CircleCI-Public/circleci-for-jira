@@ -1,19 +1,42 @@
-import { webTrigger } from '@forge/api';
-import { ForgeTriggerContext, WebTriggerRequest, WebTriggerResponse } from './types';
+import { ForgeTriggerContext, WebTriggerRequest, WebTriggerResponse } from './types/types';
+import { extractCloudIdFromContext } from './utils/contextUtils';
+import { resolveEndpoint } from './utils/payloadUtils';
+import { validateRequest } from './utils/requestValidation';
+import { buildErrorResponse, buildResponse } from './utils/responseBuilder';
 
 export async function handleOrbRequest(
   request: WebTriggerRequest,
   context: ForgeTriggerContext,
 ): Promise<WebTriggerResponse> {
-  console.log('request', request);
-  console.log('');
-  console.log('context', context);
-  console.log('');
-  console.log('webTriggerUrl', await webTrigger.getUrl('orb-webtrigger'));
+  try {
+    validateRequest(request);
 
-  return {
-    body: JSON.stringify({ message: "Hello from CPE's app!" }),
-    statusCode: 200,
-    headers: { 'Content-Type': ['application/json'] },
-  };
+    const cloudId = extractCloudIdFromContext(context);
+    const reqBody: unknown = JSON.parse(request.body);
+    const endpoint = resolveEndpoint(reqBody);
+    const url = `/jira/${endpoint}/0.1/cloud/${cloudId}/bulk`;
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: required so that Typescript doesn't complain about the missing "api" property
+    const response = await global.api.asApp().__requestAtlassian(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reqBody),
+    });
+
+    return buildResponse(
+      {
+        jiraResponse: await response.json(),
+        jiraRequestEndpoint: url,
+        cloudId,
+        requestBody: reqBody,
+      },
+      response.status,
+    );
+  } catch (error) {
+    return buildErrorResponse(error);
+  }
 }
