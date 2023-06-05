@@ -1,6 +1,6 @@
 import { ForgeTriggerContext, WebTriggerRequest, WebTriggerResponse } from './types/types';
 import { extractCloudIdFromContext } from './utils/contextUtils';
-import { resolveEndpoint } from './utils/payloadUtils';
+import { resolveEventType } from './utils/payloadUtils';
 import { validateRequest } from './utils/requestValidation';
 import { buildErrorResponse, buildResponse } from './utils/responseBuilder';
 
@@ -13,12 +13,12 @@ export async function handleOrbRequest(
 
     const cloudId = extractCloudIdFromContext(context);
     const payload: unknown = JSON.parse(request.body);
-    const endpoint = resolveEndpoint(payload);
-    const url = `/jira/${endpoint}/0.1/cloud/${cloudId}/bulk`;
+    const eventType = resolveEventType(payload);
+    const endpoint = `/jira/${eventType}/0.1/cloud/${cloudId}/bulk`;
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: required so that Typescript doesn't complain about the missing "api" property
-    const response = await global.api.asApp().__requestAtlassian(url, {
+    const response = await global.api.asApp().__requestAtlassian(endpoint, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -30,7 +30,7 @@ export async function handleOrbRequest(
     return buildResponse(
       {
         jiraResponse: await response.json(),
-        jiraRequestEndpoint: url,
+        jiraRequestEndpoint: endpoint,
         cloudId,
         jiraRequestBody: payload,
       },

@@ -1,6 +1,6 @@
 import { BuildPayload, DeploymentPayload } from '../types/types';
 
-export function resolveEndpoint(payload: BuildPayload | DeploymentPayload | unknown): string {
+export function resolveEventType(payload: BuildPayload | DeploymentPayload | unknown): string {
   if (isBuildPayload(payload)) return 'builds';
   if (isDeploymentPayload(payload)) return 'deployments';
   return '';
