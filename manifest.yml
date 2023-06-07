@@ -7,13 +7,13 @@ modules:
       homeUrl: https://github.com/CircleCI-Public/circleci-for-jira
       logoUrl: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       name:
-        value: Jenkins for Jira
+        value: CircleCI for Jira
   devops:buildInfoProvider:
     - key: build-info-provider
       homeUrl: https://github.com/CircleCI-Public/circleci-for-jira
       logoUrl: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       name:
-        value: Jenkins for Jira
+        value: CircleCI for Jira
   function:
     - key: handle-orb-request
       handler: index.handleOrbRequest
