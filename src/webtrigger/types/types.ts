@@ -1,4 +1,7 @@
 export interface WebTriggerRequest {
+  queryParameters: {
+    debug?: string[];
+  };
   body: string;
 }
 
