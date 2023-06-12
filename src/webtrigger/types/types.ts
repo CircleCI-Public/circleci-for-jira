@@ -3,7 +3,7 @@ export interface WebTriggerRequest {
     debug?: string[];
   };
   headers: {
-    authorization?: string[];
+    authorization: string[];
   };
   body: string;
 }
