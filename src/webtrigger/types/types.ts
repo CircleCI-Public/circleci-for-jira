@@ -2,6 +2,9 @@ export interface WebTriggerRequest {
   queryParameters: {
     debug?: string[];
   };
+  headers: {
+    authorization?: string[];
+  };
   body: string;
 }
 
@@ -91,4 +94,16 @@ interface Deployment {
 interface Association {
   associationType: string;
   values: string[];
+}
+
+export interface JWKS {
+  keys: Key[];
+}
+
+interface Key {
+  alg: string;
+  e: string;
+  kid: string;
+  kty: string;
+  n: string;
 }

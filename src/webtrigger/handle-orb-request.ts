@@ -1,7 +1,7 @@
 import { ForgeTriggerContext, WebTriggerRequest, WebTriggerResponse } from './types/types';
 import { extractCloudIdFromContext } from './utils/contextUtils';
 import { resolveEventType } from './utils/payloadUtils';
-import { validateRequest } from './utils/requestValidation';
+import { verifyAuth, verifyBody } from './utils/requestVerification';
 import { buildErrorResponse, buildResponse } from './utils/responseBuilder';
 
 export async function handleOrbRequest(
@@ -9,7 +9,8 @@ export async function handleOrbRequest(
   context: ForgeTriggerContext,
 ): Promise<WebTriggerResponse> {
   try {
-    validateRequest(request);
+    await verifyAuth(request);
+    verifyBody(request);
 
     const cloudId = extractCloudIdFromContext(context);
     const payload: unknown = JSON.parse(request.body);
