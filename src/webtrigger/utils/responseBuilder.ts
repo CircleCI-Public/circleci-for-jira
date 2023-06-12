@@ -1,17 +1,6 @@
 import { TokenExpiredError } from 'jsonwebtoken';
 
-import {
-  EmptyAuthHeaderError,
-  EmptyRequestBodyError,
-  FailedToFetchJwksError,
-  FailedToFindJwkError,
-  InvalidPayloadError,
-  InvalidTokenError,
-  MissingAuthHeaderError,
-  MissingKeyIdError,
-  MissingOrganizationIdError,
-  MissingRequestBodyError,
-} from '../types/errors';
+import * as Errors from '../types/errors';
 import { WebTriggerResponse } from '../types/types';
 
 export function buildResponse(body: object | string, statusCode: number): WebTriggerResponse {
@@ -23,11 +12,14 @@ export function buildResponse(body: object | string, statusCode: number): WebTri
 }
 
 export function buildErrorResponse(error: unknown): WebTriggerResponse {
-  if (error instanceof MissingRequestBodyError || error instanceof EmptyRequestBodyError) {
+  if (
+    error instanceof Errors.MissingRequestBodyError ||
+    error instanceof Errors.EmptyRequestBodyError
+  ) {
     return buildResponse({ error: error.message }, 400);
   }
 
-  if (error instanceof InvalidPayloadError) {
+  if (error instanceof Errors.InvalidPayloadError) {
     return buildResponse(
       {
         error: error.message,
@@ -46,16 +38,19 @@ export function buildErrorResponse(error: unknown): WebTriggerResponse {
   }
 
   if (
-    error instanceof EmptyAuthHeaderError ||
-    error instanceof FailedToFindJwkError ||
-    error instanceof InvalidTokenError ||
-    error instanceof MissingAuthHeaderError ||
-    error instanceof MissingKeyIdError
+    error instanceof Errors.EmptyAuthHeaderError ||
+    error instanceof Errors.FailedToFindJwkError ||
+    error instanceof Errors.InvalidTokenError ||
+    error instanceof Errors.MissingAuthHeaderError ||
+    error instanceof Errors.MissingKeyIdError
   ) {
     return buildResponse({ error: error.message }, 401);
   }
 
-  if (error instanceof MissingOrganizationIdError || error instanceof FailedToFetchJwksError) {
+  if (
+    error instanceof Errors.MissingOrganizationIdError ||
+    error instanceof Errors.FailedToFetchJwksError
+  ) {
     return buildResponse({ error: error.message }, 500);
   }
 
