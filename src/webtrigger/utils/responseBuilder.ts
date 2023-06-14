@@ -1,5 +1,3 @@
-import { TokenExpiredError } from 'jsonwebtoken';
-
 import * as Errors from '../types/errors';
 import { WebTriggerResponse } from '../types/types';
 
@@ -11,56 +9,28 @@ export function buildResponse(body: object | string, statusCode: number): WebTri
   };
 }
 
-export function buildErrorResponse(error: unknown): WebTriggerResponse {
-  if (
-    error instanceof Errors.MissingRequestBodyError ||
-    error instanceof Errors.EmptyRequestBodyError
-  ) {
-    return buildResponse({ error: error.message }, 400);
-  }
-
-  if (error instanceof Errors.InvalidPayloadError) {
-    return buildResponse(
-      {
-        error: error.message,
-        message:
-          "See 'https://developer.atlassian.com/cloud/jira/software/rest/api-group-builds/#api-group-builds' for build and 'https://developer.atlassian.com/cloud/jira/software/rest/api-group-deployments/#api-group-deployments' for deployment examples.",
-      },
-      400,
-    );
-  }
-
-  if (error instanceof TokenExpiredError) {
-    return buildResponse(
-      { error: error.message, message: 'Please try again with a new token.' },
-      401,
-    );
-  }
-
-  if (
-    error instanceof Errors.EmptyAuthHeaderError ||
-    error instanceof Errors.FailedToFindJwkError ||
-    error instanceof Errors.InvalidTokenError ||
-    error instanceof Errors.MissingAuthHeaderError ||
-    error instanceof Errors.MissingKeyIdError
-  ) {
-    return buildResponse({ error: error.message }, 401);
-  }
-
-  if (
-    error instanceof Errors.MissingOrganizationIdError ||
-    error instanceof Errors.FailedToFetchJwksError
-  ) {
-    return buildResponse({ error: error.message }, 500);
-  }
+export function buildErrorResponse(error: Error, requestId: string): WebTriggerResponse {
+  // If it is a known error, fetch the status code from the error.
+  // If it is a third party error, map it to the proper status code.
+  // Otherwise, default to 500.
+  const statusCode = isKnownError(error, Errors)
+    ? (error as Errors.WebTriggerErrorResponse).statusCode
+    : Errors.getThirdPartyErrorMap().get(error.constructor) ?? 500;
 
   return buildResponse(
     {
-      error: 'An unexpected error occurred. Please try again or open an issue.',
-      message: (<Error>error).message,
-      stack: (<Error>error).stack,
-      name: (<Error>error).name,
+      error: error.name,
+      message: error.message,
+      stack: error.stack,
+      requestId,
     },
-    500,
+    statusCode,
+  );
+}
+
+function isKnownError(error: Error, errors: typeof Errors) {
+  return Object.values(errors).some(
+    errorType =>
+      error instanceof Error && typeof errorType === 'function' && error.constructor === errorType,
   );
 }
