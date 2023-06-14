@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { ForgeTriggerContext, WebTriggerRequest, WebTriggerResponse } from './types/types';
 import { extractCloudIdFromContext } from './utils/contextUtils';
 import { resolveEventType } from './utils/payloadUtils';
@@ -8,6 +10,8 @@ export async function handleOrbRequest(
   request: WebTriggerRequest,
   context: ForgeTriggerContext,
 ): Promise<WebTriggerResponse> {
+  const requestId = uuidv4();
+
   try {
     await verifyAuth(request);
     verifyBody(request);
@@ -37,10 +41,12 @@ export async function handleOrbRequest(
         ...(isDebug ? { jiraRequestEndpoint: endpoint } : {}),
         ...(isDebug ? { jiraResponseMetadata: response } : {}),
         ...(isDebug ? { orbRequestMetadata: request } : {}),
+        ...(isDebug ? { requestId } : {}),
       },
       response.status,
     );
   } catch (error) {
-    return buildErrorResponse(error);
+    console.error(requestId, error);
+    return buildErrorResponse(error as Error, requestId);
   }
 }
