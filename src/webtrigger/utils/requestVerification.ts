@@ -31,7 +31,11 @@ export async function verifyAuth(request: WebTriggerRequest): Promise<void> {
   const jwk = await getJwk(jwksUri, kid);
   const pem = jwkToPem(jwk);
 
-  const verifiedToken = verify(token, pem, { algorithms: ['RS256'], audience: [orgId] });
+  const verifiedToken = verify(token, pem, {
+    algorithms: ['RS256'],
+    audience: [orgId],
+    issuer: [`https://oidc.circleci.com/org/${orgId}`],
+  });
   if (verifiedToken === undefined) throw new Errors.InvalidTokenError();
 }
 
