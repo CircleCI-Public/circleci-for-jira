@@ -1,6 +1,12 @@
+declare global {
+  // eslint-disable-next-line no-var
+  var requestId: string;
+  // eslint-disable-next-line no-var
+  var verbosity: LoggingLevel;
+}
 export interface WebTriggerRequest {
   queryParameters: {
-    debug?: string[];
+    verbosity?: string[];
   };
   headers: {
     authorization: string[];
@@ -106,4 +112,12 @@ interface Key {
   kid: string;
   kty: string;
   n: string;
+}
+
+export enum LoggingLevel {
+  ERROR = 0,
+  WARN = 1,
+  INFO = 2,
+  DEBUG = 3,
+  LOG = 4,
 }
