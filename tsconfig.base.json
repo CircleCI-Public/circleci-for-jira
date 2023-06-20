@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     /* Language and Environment */
     "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "sourceMap": true,
@@ -27,8 +24,13 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": ["dom", "dom.iterable"],
-    "types": ["node"]
+    "types": ["node"],
+    "composite": true
   },
-  "include": ["src/**/*.ts", "src/app.tsx"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["packages/**/tests/**", "packages/**/dist/**"],
+  "references": [
+    {
+      "path": "./packages/forge"
+    }
+  ]
 }
