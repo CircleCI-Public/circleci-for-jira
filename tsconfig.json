@@ -29,6 +29,6 @@
     "lib": ["dom", "dom.iterable"],
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/app.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
 }
