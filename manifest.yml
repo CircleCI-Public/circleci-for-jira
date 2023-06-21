@@ -1,4 +1,16 @@
 modules:
+  jira:adminPage:
+    - key: circleci-for-jira-admin-page
+      function: main-admin-page
+      title: Admin page example
+    - key: circleci-for-jira-configure-page
+      function: main-configure-page
+      title: Configure page example
+      useAsConfig: true
+    - key: circleci-for-jira-get-started-page
+      function: main-get-started-page
+      title: Get started page example
+      useAsGetStarted: true
   webtrigger:
     - key: orb-webtrigger
       function: handle-orb-request
@@ -17,6 +29,12 @@ modules:
   function:
     - key: handle-orb-request
       handler: index.handleOrbRequest
+    - key: main-admin-page
+      handler: index.runAdminPage
+    - key: main-configure-page
+      handler: index.runConfigurePage
+    - key: main-get-started-page
+      handler: index.runGetStartedPage
 app:
   id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
   runtime:
