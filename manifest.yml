@@ -1,14 +1,23 @@
 modules:
   jira:adminPage:
     - key: circleci-for-jira-admin-page
-      function: main-admin-page
+      render: native
+      resource: admin-home
+      resolver:
+        function: storageResolver
       title: Admin page example
     - key: circleci-for-jira-configure-page
-      function: main-configure-page
+      render: native
+      resource: admin-configure
+      resolver:
+        function: storageResolver
       title: Configure page example
       useAsConfig: true
     - key: circleci-for-jira-get-started-page
-      function: main-get-started-page
+      render: native
+      resource: admin-get-started
+      resolver:
+        function: storageResolver
       title: Get started page example
       useAsGetStarted: true
   webtrigger:
@@ -29,12 +38,15 @@ modules:
   function:
     - key: handle-orb-request
       handler: index.handleOrbRequest
-    - key: main-admin-page
-      handler: index.runAdminPage
-    - key: main-configure-page
-      handler: index.runConfigurePage
-    - key: main-get-started-page
-      handler: index.runGetStartedPage
+    - key: storageResolver
+      handler: index.storageHandler
+resources:
+  - key: admin-home
+    path: src/admin-page/AdminPage.tsx
+  - key: admin-configure
+    path: src/admin-page/Configure.tsx
+  - key: admin-get-started
+    path: src/admin-page/GetStarted.tsx
 app:
   id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
   runtime:
