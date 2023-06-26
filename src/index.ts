@@ -1,6 +1,6 @@
 import { runAdminPage } from './admin-page/AdminPage';
 import { runConfigurePage } from './admin-page/Configure';
-import { runGetStartedPage } from './admin-page/getStarted';
+import { runGetStartedPage } from './admin-page/GetStarted';
 import { handleOrbRequest } from './webtrigger/handle-orb-request';
 
 // Web Triggers
