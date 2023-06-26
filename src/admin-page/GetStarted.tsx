@@ -1,15 +1,25 @@
-import ForgeUI, { AdminPage, Fragment, render, Text } from '@forge/ui';
+import { invoke } from '@forge/bridge';
+import ForgeReconciler, { Text } from '@forge/react';
+import React, { useEffect, useState } from 'react';
 
 const App = () => {
+  const [data, setData] = useState('');
+  useEffect(() => {
+    const fetchData = async () => {
+      const text: string = await invoke('getText', { example: 'my-invoke-variable' });
+      setData(text);
+    };
+    fetchData();
+  }, []);
   return (
-    <Fragment>
-      <Text>Get Started!</Text>
-    </Fragment>
+    <>
+      <Text>Hello world!</Text>
+      <Text>{data ? data : 'Loading...'}</Text>
+    </>
   );
 };
-
-export const runGetStartedPage = render(
-  <AdminPage>
+ForgeReconciler.render(
+  <React.StrictMode>
     <App />
-  </AdminPage>,
+  </React.StrictMode>,
 );
