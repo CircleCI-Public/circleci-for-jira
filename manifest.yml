@@ -1,24 +1,24 @@
 modules:
   jira:adminPage:
     - key: circleci-for-jira-admin-page
-      render: native
       resource: admin-home
       resolver:
         function: storageResolver
-      title: Admin page example
+      title: CircleCI for Jira
+      icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
     - key: circleci-for-jira-configure-page
-      render: native
       resource: admin-configure
       resolver:
         function: storageResolver
-      title: Configure page example
+      title: CircleCI for Jira - Configure
+      icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       useAsConfig: true
     - key: circleci-for-jira-get-started-page
-      render: native
       resource: admin-get-started
       resolver:
         function: storageResolver
-      title: Get started page example
+      title: CircleCI for Jira - Get Started
+      icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       useAsGetStarted: true
   webtrigger:
     - key: orb-webtrigger
@@ -42,13 +42,19 @@ modules:
       handler: index.storageHandler
 resources:
   - key: admin-home
-    path: src/admin-page/AdminPage.tsx
+    path: apps/admin-home/build
+    tunnel:
+      port: 3000
   - key: admin-configure
-    path: src/admin-page/Configure.tsx
+    path: apps/admin-configure/build
+    tunnel:
+      port: 3001
   - key: admin-get-started
-    path: src/admin-page/GetStarted.tsx
+    path: apps/admin-get-started/build
+    tunnel:
+      port: 3002
 app:
-  id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
+  id: ari:cloud:ecosystem::app/6fd10ed4-0026-4974-b62d-6d0002f86a94
   runtime:
     snapshots: false
 permissions:
@@ -56,6 +62,11 @@ permissions:
     fetch:
       backend:
         - 'https://oidc.circleci.com/org/*/.well-known/jwks-pub.json'
+  content:
+    styles:
+      - 'unsafe-inline'
+    scripts:
+      - 'unsafe-inline'
   scopes:
     - 'storage:app'
     - 'write:build-info:jira'

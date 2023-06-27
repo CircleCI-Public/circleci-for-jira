@@ -4,6 +4,7 @@ declare global {
   // eslint-disable-next-line no-var
   var verbosity: LoggingLevel;
 }
+
 export interface WebTriggerRequest {
   queryParameters: {
     verbosity?: string[];
@@ -120,4 +121,14 @@ export enum LoggingLevel {
   INFO = 2,
   DEBUG = 3,
   LOG = 4,
+}
+
+export interface ConfigurePageForm {
+  organizationId?: string;
+  jwtAudience?: string;
+}
+
+export interface SetStorageValuePayload {
+  storageKey: string;
+  storageValue: unknown;
 }

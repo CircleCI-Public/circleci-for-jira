@@ -5,12 +5,12 @@ import {
   LoggingLevel,
   WebTriggerRequest,
   WebTriggerResponse,
-} from './types/types';
-import { extractCloudIdFromContext } from './utils/contextUtils';
-import { parseLevel, printDebug, printError } from './utils/logger';
-import { resolveEventType } from './utils/payloadUtils';
-import { verifyAuth, verifyBody } from './utils/requestVerification';
-import { buildErrorResponse, buildResponse } from './utils/responseBuilder';
+} from '../types/types';
+import { extractCloudIdFromContext } from '../utils/contextUtils';
+import { parseLevel, printDebug, printError } from '../utils/logger';
+import { resolveEventType } from '../utils/payloadUtils';
+import { verifyAuth, verifyBody } from '../utils/requestVerification';
+import { buildErrorResponse, buildResponse } from '../utils/responseBuilder';
 
 export async function handleOrbRequest(
   request: WebTriggerRequest,
