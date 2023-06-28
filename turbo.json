@@ -9,18 +9,13 @@
       "cache": false
     },
     "deploy": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "lint": {},
-    "serve": {
-      "dependsOn": ["^build"]
-    },
-    "tunnel": {
-      "dependsOn": ["^serve"]
-    }
+    "lint:fix": {}
   }
 }
