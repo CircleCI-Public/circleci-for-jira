@@ -2,16 +2,19 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "deploy": "turbo run deploy",
     "clean": "turbo run clean",
+    "deploy": "turbo run deploy",
     "dev": "turbo run dev --no-cache --continue",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "test": "turbo run test"
+    "serve": "turbo run serve",
+    "test": "turbo run test",
+    "tunnel": "pnpm run serve & (cd apps/forge && forge tunnel)"
   },
   "devDependencies": {
     "eslint": "^8.4.1",
     "prettier": "^2.5.1",
+    "serve": "^14.2.0",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.5"

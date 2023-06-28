@@ -26,6 +26,7 @@
     "dev": "PORT=3002 react-scripts start",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
+    "serve": "PORT=3002 serve -s build",
     "test": "react-scripts test"
   },
   "eslintConfig": {

@@ -25,6 +25,7 @@
     "clean": "rm -rf build",
     "dev": "PORT=3001 react-scripts start",
     "eject": "react-scripts eject",
+    "serve": "PORT=3001 serve -s build",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },

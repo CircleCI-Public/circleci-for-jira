@@ -5,16 +5,22 @@
       "outputs": ["build/**", "dist/**"],
       "dependsOn": ["^build"]
     },
-    "deploy": {
-      "dependsOn": ["build"]
+    "clean": {
+      "cache": false
     },
-    "lint": {},
+    "deploy": {
+      "dependsOn": ["^build"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "clean": {
-      "cache": false
+    "lint": {},
+    "serve": {
+      "dependsOn": ["^build"]
+    },
+    "tunnel": {
+      "dependsOn": ["^serve"]
     }
   }
 }
