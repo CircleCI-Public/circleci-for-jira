@@ -42,19 +42,19 @@ modules:
       handler: index.storageHandler
 resources:
   - key: admin-home
-    path: apps/admin-home/build
+    path: ../admin-home/build
     tunnel:
       port: 3000
   - key: admin-configure
-    path: apps/admin-configure/build
+    path: ../admin-configure/build
     tunnel:
       port: 3001
   - key: admin-get-started
-    path: apps/admin-get-started/build
+    path: ../admin-get-started/build
     tunnel:
       port: 3002
 app:
-  id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
+  id: ari:cloud:ecosystem::app/6fd10ed4-0026-4974-b62d-6d0002f86a94
   runtime:
     snapshots: false
 permissions:

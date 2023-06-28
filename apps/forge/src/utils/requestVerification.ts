@@ -1,6 +1,6 @@
 import { decode, verify } from 'jsonwebtoken';
 import jwkToPem, { RSA } from 'jwk-to-pem';
-import fetch from 'node-fetch';
+import { fetch } from '@forge/api';
 
 import * as Errors from '../types/errors';
 import { JWKS, WebTriggerRequest } from '../types/types';
@@ -43,7 +43,7 @@ async function getJwk(uri: string, kid: string): Promise<RSA> {
   const response = await fetch(uri);
   if (!response.ok) throw new Errors.FailedToFetchJwksError(uri);
 
-  const jwks: JWKS = await response.json();
+  const jwks = (await response.json()) as JWKS;
   const jwk = jwks.keys.find(key => key.kid === kid);
   if (jwk === undefined) throw new Errors.FailedToFindJwkError(kid);
   return { e: jwk.e, kty: 'RSA', n: jwk.n };
