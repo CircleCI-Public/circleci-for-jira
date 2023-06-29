@@ -150,8 +150,8 @@ importers:
   apps/forge:
     dependencies:
       '@forge/api':
-        specifier: ^2.16.0
-        version: 2.16.0
+        specifier: ^2.18.0
+        version: 2.18.0
       '@forge/resolver':
         specifier: ^1.5.10
         version: 1.5.10
@@ -842,18 +842,6 @@ packages:
     resolution: {integrity: sha512-s2UHCoiXfxMvmfzqoN+vrQ84ahUSYde9qNO1MdxmoEhyHWsfmwOpFlwYV+ePJEVc7gFnATGUi376WowX1N7tFg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  /@forge/api@2.16.0:
-    resolution: {integrity: sha512-0F90d4JVeDaYiPbDKpsxbwqjOazfRJ5pRl3kM1Scf3x54IUVN/dOYZldWG/Q+6jXzBTbebOoKHjh2hgjXooyrQ==}
-    dependencies:
-      '@forge/auth': 0.0.1
-      '@forge/egress': 1.2.1
-      '@forge/storage': 1.5.2
-      '@types/node-fetch': 2.6.4
-      node-fetch: 2.6.7
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /@forge/api@2.18.0:
     resolution: {integrity: sha512-C2SO/0Z9k8EL6RVwxaMDBd/p5gVjvOA8As8/CUl/HgPy4B1cLjT/xrLqvRiUZRSlikXuQzBzIXh3vKAEB30aHw==}
     dependencies:
@@ -884,10 +872,6 @@ packages:
       '@forge/api': 2.18.0
     transitivePeerDependencies:
       - encoding
-    dev: false
-
-  /@forge/storage@1.5.2:
-    resolution: {integrity: sha512-/w9UaTMmvK7DSnGpg+bbLPUF8GDPfrShNPZi7ArgwexihK1j/J7EVvH2j1VEjXGdSH+FuRcqjThfCZoGytFJHw==}
     dev: false
 
   /@forge/storage@1.5.3:
@@ -2857,18 +2841,6 @@ packages:
 
   /node-fetch@2.6.11:
     resolution: {integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: false
-
-  /node-fetch@2.6.7:
-    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
