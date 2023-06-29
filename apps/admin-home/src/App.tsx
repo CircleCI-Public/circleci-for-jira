@@ -1,5 +1,6 @@
 import './App.css';
 
+import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Link } from 'ui';
 
@@ -21,14 +22,17 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Link href='https://reactjs.org' target='_blank'>
-        Learn React
-      </Link>
       <div className='card'>
         <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
+      </div>
+      <div>
+        <Link href={'https://google.com'}>I&apos;m a shared component</Link>
+      </div>
+      <div>
+        <Button variant='contained'>I&apos;m a MUI button</Button>
       </div>
       <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
     </>
