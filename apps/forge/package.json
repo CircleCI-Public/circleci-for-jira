@@ -2,7 +2,8 @@
   "name": "circleci-for-jira",
   "version": "1.0.0",
   "scripts": {
-    "deploy": "forge deploy --no-verify"
+    "deploy": "forge deploy --no-verify",
+    "tunnel": "FORGE_DEV_TUNNEL=true forge tunnel"
   },
   "license": "MIT",
   "devDependencies": {
