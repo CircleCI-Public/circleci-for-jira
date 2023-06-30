@@ -54,7 +54,7 @@ resources:
     tunnel:
       port: 3002
 app:
-  id: ari:cloud:ecosystem::app/88071131-405e-4eec-8818-978c8e7230db
+  id: ari:cloud:ecosystem::app/128227a1-b1f0-4c2b-b7b6-1b32a1afee83
   runtime:
     snapshots: false
 permissions:
