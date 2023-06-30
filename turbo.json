@@ -17,6 +17,10 @@
       "persistent": true
     },
     "lint": {},
-    "lint:fix": {}
+    "lint:fix": {},
+    "tunnel": {
+      "cache": false,
+      "persistent": true
+    }
   }
 }
