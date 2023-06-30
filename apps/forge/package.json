@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@forge/api": "^2.16.0",
-    "@forge/resolver": "^1.5.10",
+    "@forge/resolver": "^1.5.11",
     "@forge/ui": "^1.9.0",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.5",
