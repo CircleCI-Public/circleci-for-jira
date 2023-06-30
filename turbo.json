@@ -10,7 +10,7 @@
     },
     "deploy": {
       "cache": false,
-      "dependsOn": ["build"]
+      "dependsOn": [ "^deploy", "build" ]
     },
     "dev": {
       "cache": false,
