@@ -1,6 +1,5 @@
 import { storage } from '@forge/api';
 import Resolver from '@forge/resolver';
-
 import { SetStorageValuePayload } from '../types/types';
 import { printError, printLog } from '../utils/logger';
 
@@ -14,12 +13,12 @@ resolver.define('getStorageValue', async ({ payload, context }) => {
   if (!storageKey) {
     const errorMessage = 'No storage key provided. Please provide one and try again.';
     printError(errorMessage);
-    return { error: errorMessage, requestId: global.requestId };
+    return { error: errorMessage };
   }
 
   const storageValue = await storage.get(storageKey);
   printLog('getStorageValue - Storage Value', storageValue);
-  return { storageValue, requestId };
+  return { storageValue };
 });
 
 resolver.define('setStorageValue', async ({ payload, context }) => {
@@ -30,7 +29,7 @@ resolver.define('setStorageValue', async ({ payload, context }) => {
   if (!storageKey) {
     const errorMessage = 'No storage key provided. Please provide one and try again.';
     printError(errorMessage);
-    return { error: errorMessage, requestId: global.requestId };
+    return { error: errorMessage };
   }
 
   await storage.set(storageKey, storageValue);
