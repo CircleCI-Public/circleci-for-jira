@@ -10,18 +10,14 @@
     },
     "deploy": {
       "cache": false,
-      "dependsOn": [ "^deploy", "build" ]
+      "dependsOn": [ "^build", "build" ]
     },
     "dev": {
       "cache": false,
+      "dependsOn": [ "^build" ],
       "persistent": true
     },
     "lint": {},
-    "lint:fix": {},
-    "tunnel": {
-      "cache": false,
-      "dependsOn": ["build"],
-      "persistent": true
-    }
+    "lint:fix": {}
   }
 }

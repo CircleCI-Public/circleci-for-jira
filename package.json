@@ -9,8 +9,7 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "serve": "turbo run serve",
-    "test": "turbo run test",
-    "tunnel": "turbo run tunnel"
+    "test": "turbo run test"
   },
   "devDependencies": {
     "eslint": "^8.43.0",
