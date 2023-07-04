@@ -1,5 +1,5 @@
-import { invoke } from '@forge/bridge';
 import CheckIcon from '@mui/icons-material/Check';
+import ErrorIcon from '@mui/icons-material/Error';
 import {
   Alert,
   Box,
@@ -11,73 +11,41 @@ import {
 } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { green } from '@mui/material/colors';
-import React, { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
 
-interface FormState {
-  organizationId: string;
-  audience: string;
-}
-
-enum FormStatus {
-  IDLE = 'idle',
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
+import { getItem, setItem } from './api/storage';
+import FormData from './types/FormData';
 
 const MyForm = () => {
-  const [open, setOpen] = React.useState(false);
-  const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE);
-  const [values, setValues] = useState<FormState>({ organizationId: '', audience: '' });
+  const [isAlertOpen, setOpen] = React.useState(false);
+  const [formData, setFormData] = useState<FormData>({ organizationId: '', audience: '' });
+  const storageKey = 'organizationId';
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setStatus(FormStatus.LOADING);
-      const {
-        error,
-        storageValue,
-      }: { error: string; storageValue: { organizationId: string; audience: string } } =
-        await invoke('getStorageValue', {
-          storageKey: 'organizationId',
-        });
-      if (error) {
-        // TODO: Handle error
-        console.error(error);
-        setValues({ organizationId: 'Error', audience: 'Error' });
-        setStatus(FormStatus.ERROR);
-      } else {
-        setValues({
-          organizationId: storageValue?.organizationId || '',
-          audience: storageValue?.audience || '',
-        });
-        setStatus(FormStatus.SUCCESS);
-      }
-    };
-    fetchData();
-  }, []);
+  const query = useQuery({
+    queryKey: ['formData', storageKey],
+    queryFn: async () => {
+      const response = await getItem(storageKey);
+      setFormData(response);
+      return response;
+    },
+  });
+
+  const mutation = useMutation({
+    mutationFn: ({ key, formData }: { key: string; formData: FormData }) => setItem(key, formData),
+  });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
+    setFormData({
+      ...formData,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (status !== FormStatus.LOADING) {
-      setStatus(FormStatus.LOADING);
-      const { error }: { error: string } = await invoke('setStorageValue', {
-        storageKey: 'organizationId',
-        storageValue: values,
-      });
-      // TODO: Handle error
-      if (error) setStatus(FormStatus.ERROR);
-      else setStatus(FormStatus.SUCCESS);
-      setOpen(true);
-    }
-    console.log(values);
+    mutation.mutate({ key: storageKey, formData });
+    setOpen(true);
   };
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -91,13 +59,13 @@ const MyForm = () => {
         <FormControl fullWidth margin='normal'>
           <TextField
             autoFocus
-            disabled={status === FormStatus.LOADING}
+            disabled={query.isLoading || mutation.isLoading}
             id='organizationId'
             label='Organization ID'
             name='organizationId'
             onChange={handleInputChange}
             required
-            value={values.organizationId}
+            value={formData.organizationId}
             variant='outlined'
           />
           <FormHelperText id='organizationId-helper-text'>
@@ -105,7 +73,7 @@ const MyForm = () => {
           </FormHelperText>
         </FormControl>
         <TextField
-          disabled={status === FormStatus.LOADING}
+          disabled={query.isLoading || mutation.isLoading}
           fullWidth
           id='audience'
           label='Audience'
@@ -113,20 +81,20 @@ const MyForm = () => {
           name='audience'
           onChange={handleInputChange}
           required
-          value={values.audience}
+          value={formData.audience}
           variant='outlined'
         />
         <Box sx={{ m: 1, position: 'relative' }}>
           <Button
             color='primary'
-            disabled={status === FormStatus.LOADING}
+            disabled={query.isLoading || mutation.isLoading}
             fullWidth
             type='submit'
             variant='contained'
           >
             Submit
           </Button>
-          {status === FormStatus.LOADING && (
+          {(query.isLoading || mutation.isLoading) && (
             <CircularProgress
               size={24}
               sx={{
@@ -140,16 +108,24 @@ const MyForm = () => {
             />
           )}
         </Box>
-        {open && (
+        {isAlertOpen && mutation.isSuccess && (
           <Alert
             onClose={handleClose}
             icon={<CheckIcon fontSize='inherit' />}
-            severity={status === FormStatus.SUCCESS ? 'success' : 'error'}
+            severity={'success'}
             sx={{ mt: 4 }}
           >
-            {status === FormStatus.SUCCESS
-              ? 'This is a success alert — check it out!'
-              : 'This is an error alert — check it out!'}
+            This is a success alert — check it out!
+          </Alert>
+        )}
+        {isAlertOpen && mutation.isError && (
+          <Alert
+            onClose={handleClose}
+            icon={<ErrorIcon fontSize='inherit' />}
+            severity='error'
+            sx={{ mt: 4 }}
+          >
+            This is an error alert — check it out!
           </Alert>
         )}
       </form>

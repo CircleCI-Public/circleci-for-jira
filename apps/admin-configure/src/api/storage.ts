@@ -1,30 +1,30 @@
 import { invoke } from '@forge/bridge';
 
-interface GetStorageValueResponse {
+import FormData from '../types/FormData';
+
+interface GetItemResponse {
   error: string;
   storageValue: { organizationId: string; audience: string };
 }
 
-interface SetStorageValueResponse {
+interface SetItemResponse {
   error: string | undefined;
 }
 
-export async function getStorageValue(storageKey: string): Promise<GetStorageValueResponse> {
-  const { error, storageValue }: GetStorageValueResponse = await invoke('getStorageValue', {
+export async function getItem(storageKey: string): Promise<FormData> {
+  const { error, storageValue }: GetItemResponse = await invoke('getStorageValue', {
     storageKey,
   });
 
-  return { error, storageValue };
+  if (error) throw new Error(error);
+  return storageValue;
 }
 
-export async function setStorageValue(
-  storageKey: string,
-  storageValue: string,
-): Promise<SetStorageValueResponse> {
-  const { error }: SetStorageValueResponse = await invoke('setStorageValue', {
+export async function setItem(storageKey: string, storageValue: unknown): Promise<void> {
+  const { error }: SetItemResponse = await invoke('setStorageValue', {
     storageKey,
     storageValue,
   });
 
-  return { error };
+  if (error) throw new Error(error);
 }
