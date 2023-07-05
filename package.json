@@ -16,5 +16,10 @@
     "prettier": "^2.8.8",
     "turbo": "^1.10.7"
   },
-  "packageManager": "pnpm@8.6.5"
+  "packageManager": "pnpm@8.6.5",
+  "pnpm": {
+    "overrides": {
+      "@mui/material": "^5.13.7"
+    }
+  }
 }
