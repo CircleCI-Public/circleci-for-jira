@@ -6,10 +6,19 @@ settings:
 
 overrides:
   '@mui/material': ^5.13.7
+  '@tanstack/react-query': ^4.29.19
+  '@forge/bridge': ^2.6.0
 
 importers:
 
   .:
+    dependencies:
+      '@forge/bridge':
+        specifier: ^2.6.0
+        version: 2.6.0
+      admin-home:
+        specifier: workspace:^
+        version: link:apps/admin-home
     devDependencies:
       eslint:
         specifier: ^8.43.0
@@ -124,9 +133,15 @@ importers:
       '@emotion/styled':
         specifier: ^11.11.0
         version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.14)(react@18.2.0)
+      '@forge/bridge':
+        specifier: ^2.6.0
+        version: 2.6.0
       '@mui/material':
         specifier: ^5.13.7
         version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^4.29.19
+        version: 4.29.19(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -241,6 +256,10 @@ importers:
   packages/tsconfig: {}
 
   packages/ui:
+    dependencies:
+      '@mui/material':
+        specifier: ^5.13.7
+        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: ^18.0.37
@@ -1613,8 +1632,8 @@ packages:
   /@forge/cli-shared@3.15.0(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-R88u+vUwTHxJ9QjRecwQ6chorPkzO6h3YfN5Tr4btZNnNOr20C4axQMaQedZ4wmy+tNgvc7HFZSi29S2Gw/JfA==}
     dependencies:
-      '@forge/manifest': 4.16.0(webpack-dev-server@4.15.1)
-      '@forge/util': 1.2.3(webpack-dev-server@4.15.1)
+      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
       '@sentry/node': 7.57.0
       adm-zip: 0.5.10
       array.prototype.flatmap: 1.3.1
@@ -2086,28 +2105,6 @@ packages:
       - webpack-dev-server
     dev: true
 
-  /@forge/manifest@4.16.0(webpack-dev-server@4.15.1):
-    resolution: {integrity: sha512-1i/vQ4OPQpxCDQATzw7BsQ+26F/1O8sbnpgfb4gIMm2E4oHsx3ADU537ka53mWaHY5o0/ioMyT72RfPAielTZA==}
-    dependencies:
-      '@forge/util': 1.2.3(webpack-dev-server@4.15.1)
-      ajv: 6.12.6
-      cheerio: 0.22.0
-      js-yaml: 3.14.1
-      json-schema-to-typescript: 9.1.1
-      lodash: 4.17.21
-      node-fetch: 2.6.11
-      typescript-json-schema: 0.45.1
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@webpack-cli/generators'
-      - '@webpack-cli/migrate'
-      - encoding
-      - esbuild
-      - uglify-js
-      - webpack-bundle-analyzer
-      - webpack-dev-server
-    dev: true
-
   /@forge/resolver@1.5.10:
     resolution: {integrity: sha512-nTxeIDgCLW2nUQqzojBpva24tL7H3Fy55JsBPA8HT8ckI6Bt3X3q4wsYQgoAWLUVlzLiA3T8m3HY59mP7yY+7g==}
     dependencies:
@@ -2377,7 +2374,7 @@ packages:
       '@forge/bundler': 4.10.1(webpack-cli@4.10.0)(webpack-dev-server@4.15.1)
       '@forge/cli-shared': 3.15.0(webpack-dev-server@4.15.1)
       '@forge/csp': 2.1.3
-      '@forge/runtime': 4.4.2(webpack-dev-server@4.15.1)
+      '@forge/runtime': 4.4.2(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
       express: 4.18.2
       express-intercept: 0.8.10
       http-proxy-middleware: 1.3.1
@@ -2478,21 +2475,6 @@ packages:
     dependencies:
       webpack: 5.78.0(webpack-cli@4.10.0)
       webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)(webpack@5.78.0)
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@webpack-cli/generators'
-      - '@webpack-cli/migrate'
-      - esbuild
-      - uglify-js
-      - webpack-bundle-analyzer
-      - webpack-dev-server
-    dev: true
-
-  /@forge/util@1.2.3(webpack-dev-server@4.15.1):
-    resolution: {integrity: sha512-VijL/4LX4WHYMkfynU+5mfS2LvqUy3FU8zWEMwXQ31rPglKrpK/5+pTKUjjCEsCTjMA2jDqXUyLYads+pRl8dw==}
-    dependencies:
-      webpack: 5.78.0(webpack-cli@4.10.0)
-      webpack-cli: 4.10.0(webpack-dev-server@4.15.1)(webpack@5.78.0)
     transitivePeerDependencies:
       - '@swc/core'
       - '@webpack-cli/generators'

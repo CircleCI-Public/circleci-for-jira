@@ -21,4 +21,4 @@ const AtlassianTheme = createTheme({
   },
 });
 
-export default AtlassianTheme;
+export { AtlassianTheme };
