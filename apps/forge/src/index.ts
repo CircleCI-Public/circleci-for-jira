@@ -1,5 +1,5 @@
-import { storageHandler } from './resolvers/storage';
+import { handler } from './resolvers';
 import { handleOrbRequest } from './webtrigger/handle-orb-request';
 
 // Web Triggers
-export { handleOrbRequest, storageHandler };
+export { handleOrbRequest, handler };

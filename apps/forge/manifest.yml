@@ -3,20 +3,20 @@ modules:
     - key: circleci-for-jira-admin-page
       resource: admin-home
       resolver:
-        function: storageResolver
+        function: resolver
       title: CircleCI for Jira
       icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
     - key: circleci-for-jira-configure-page
       resource: admin-configure
       resolver:
-        function: storageResolver
+        function: resolver
       title: CircleCI for Jira - Configure
       icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       useAsConfig: true
     - key: circleci-for-jira-get-started-page
       resource: admin-get-started
       resolver:
-        function: storageResolver
+        function: resolver
       title: CircleCI for Jira - Get Started
       icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       useAsGetStarted: true
@@ -38,8 +38,8 @@ modules:
   function:
     - key: handle-orb-request
       handler: index.handleOrbRequest
-    - key: storageResolver
-      handler: index.storageHandler
+    - key: resolver
+      handler: index.handler
 resources:
   - key: admin-home
     path: ../admin-home/dist
