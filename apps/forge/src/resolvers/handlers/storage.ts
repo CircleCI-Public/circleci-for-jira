@@ -1,11 +1,8 @@
 import { storage } from '@forge/api';
-import Resolver from '@forge/resolver';
-import { SetStorageValuePayload } from '../types/types';
-import { printError, printLog } from '../utils/logger';
+import { SetStorageValuePayload } from '../../types/types';
+import { printError, printLog } from '../../utils/logger';
 
-const resolver = new Resolver();
-
-resolver.define('getStorageValue', async ({ payload, context }) => {
+export async function getStorageValue({ payload, context }: { payload: any; context: any }) {
   printLog('getStorageValue - Context', context);
   printLog('getStorageValue - Payload', payload);
 
@@ -19,9 +16,9 @@ resolver.define('getStorageValue', async ({ payload, context }) => {
   const storageValue = await storage.get(storageKey);
   printLog('getStorageValue - Storage Value', storageValue);
   return { storageValue };
-});
+}
 
-resolver.define('setStorageValue', async ({ payload, context }) => {
+export async function setStorageValue({ payload, context }: { payload: any; context: any }) {
   printLog('setStorageValue - Context', context);
   printLog('setStorageValue - Payload', payload);
 
@@ -33,6 +30,4 @@ resolver.define('setStorageValue', async ({ payload, context }) => {
   }
 
   await storage.set(storageKey, storageValue);
-});
-
-export const storageHandler = resolver.getDefinitions();
+}
