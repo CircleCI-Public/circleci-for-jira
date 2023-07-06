@@ -1,45 +1,30 @@
-import CheckIcon from '@mui/icons-material/Check';
-import ErrorIcon from '@mui/icons-material/Error';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import {
-  Alert,
-  Box,
-  Button,
-  ClickAwayListener,
-  Container,
-  FormControl,
-  FormHelperText,
-  IconButton,
-  InputAdornment,
-  Link,
-  TextField,
-  Tooltip,
-} from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
-import { green } from '@mui/material/colors';
+import { Container, Link } from '@mui/material';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 
 import { getItem, setItem } from './api/storage';
 import { getWebTriggerUrl } from './api/webTrigger';
+import AlertsHandler from './components/AlertsHandler';
+import FormDataInput from './components/FormDataInput';
+import SubmitButton from './components/SubmitButton';
+import WebTriggerInput from './components/WebTriggerInput';
+import { STORAGE_KEY, WEB_TRIGGER_MODULE_KEY } from './constants/index';
+import { AlertData } from './types/AlertData';
 import FormData from './types/FormData';
 
 const MyForm = () => {
-  const [isAlertOpen, setOpen] = React.useState(false);
   const [formData, setFormData] = useState<FormData>({ organizationId: '', audience: '' });
+  const [isAlertOpen, setAlertOpen] = React.useState(false);
   const [isTooltipOpen, setTooltipOpen] = React.useState(false);
 
-  const storageKey = 'organizationId';
-  const webTriggerModuleKey = 'orb-webtrigger';
-
   const formDataQuery = useQuery({
-    queryKey: ['formData', storageKey],
-    queryFn: () => getItem(storageKey),
+    queryKey: ['formData', STORAGE_KEY],
+    queryFn: () => getItem(STORAGE_KEY),
   });
 
   const webTriggerQuery = useQuery({
-    queryKey: ['webTriggerUrl', webTriggerModuleKey],
-    queryFn: () => getWebTriggerUrl(webTriggerModuleKey),
+    queryKey: ['webTriggerUrl', WEB_TRIGGER_MODULE_KEY],
+    queryFn: () => getWebTriggerUrl(WEB_TRIGGER_MODULE_KEY),
   });
 
   const mutation = useMutation({
@@ -47,10 +32,35 @@ const MyForm = () => {
   });
 
   useEffect(() => {
-    if (!formDataQuery.isLoading && formDataQuery.data) {
-      setFormData(formDataQuery.data);
-    }
-  }, [formDataQuery.isLoading, formDataQuery.data]);
+    if (!formDataQuery.isLoading && formDataQuery.data) setFormData(formDataQuery.data);
+    if (formDataQuery.isError) setAlertOpen(true);
+    if (webTriggerQuery.isError) setAlertOpen(true);
+  }, [formDataQuery.isLoading, formDataQuery.isError, formDataQuery.data, webTriggerQuery.isError]);
+
+  const alertsData: AlertData[] = [
+    {
+      open: isAlertOpen && mutation.isSuccess,
+      severity: 'success',
+      message: 'Your changes have been saved!',
+    },
+    {
+      open: isAlertOpen && mutation.isError,
+      severity: 'error',
+      message: 'Something went wrong while saving your changes. Please try again or open an issue.',
+    },
+    {
+      open: isAlertOpen && formDataQuery.isError,
+      severity: 'error',
+      message:
+        'Something went wrong while fetching your data! Please refresh the page or open an issue.',
+    },
+    {
+      open: isAlertOpen && webTriggerQuery.isError,
+      severity: 'error',
+      message:
+        'Something went wrong while fetching your web trigger URL. Please refresh the page or open an issue.',
+    },
+  ];
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -61,14 +71,14 @@ const MyForm = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutation.mutate({ key: storageKey, formData });
+    mutation.mutate({ key: STORAGE_KEY, formData });
     setFormData({ ...formData });
-    setOpen(true);
+    setAlertOpen(true);
   };
 
-  const handleClose = (_event?: React.SyntheticEvent | Event, reason?: string) => {
+  const handleAlertClose = (_event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') return;
-    setOpen(false);
+    setAlertOpen(false);
   };
 
   const handleCopyToClipboard = () => {
@@ -80,134 +90,48 @@ const MyForm = () => {
     }, 2000);
   };
 
-  const handleTooltipClose = () => {
-    setTooltipOpen(false);
-  };
-
   return (
     <Container component='main' maxWidth='sm'>
       <form onSubmit={handleSubmit}>
-        <FormControl fullWidth margin='normal'>
-          <TextField
-            disabled
-            fullWidth
-            id='webTriggerUrl'
-            label='Web Trigger URL'
-            name='webTriggerUrl'
-            value={webTriggerQuery.data || ''}
-            variant='outlined'
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <ClickAwayListener onClickAway={handleTooltipClose}>
-                    <div>
-                      <Tooltip
-                        PopperProps={{
-                          disablePortal: true,
-                        }}
-                        onClose={handleTooltipClose}
-                        open={isTooltipOpen}
-                        disableFocusListener
-                        disableHoverListener
-                        disableTouchListener
-                        title='Copied!'
-                      >
-                        <IconButton
-                          onClick={handleCopyToClipboard}
-                          disabled={webTriggerQuery.isLoading}
-                        >
-                          {isTooltipOpen ? <CheckIcon /> : <FileCopyIcon />}
-                        </IconButton>
-                      </Tooltip>
-                    </div>
-                  </ClickAwayListener>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <FormHelperText id='webTrigger-helper-text'>
-            Paste this URL into your CircleCI Context used by the Jira Orb.
-          </FormHelperText>
-        </FormControl>
-
-        <FormControl fullWidth margin='normal'>
-          <TextField
-            disabled={formDataQuery.isLoading || mutation.isLoading}
-            id='organizationId'
-            label='CircleCI Organization ID'
-            name='organizationId'
-            onChange={handleInputChange}
-            required
-            value={formData.organizationId}
-            variant='outlined'
-          />
-          <FormHelperText id='organizationId-helper-text'>
-            You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
-            <Link href='https://app.circleci.com/'>CircleCI web app</Link>.
-          </FormHelperText>
-        </FormControl>
-
-        <FormControl fullWidth margin='normal'>
-          <TextField
-            disabled={formDataQuery.isLoading || mutation.isLoading}
-            fullWidth
-            id='audience'
-            label='Audience'
-            name='audience'
-            onChange={handleInputChange}
-            value={formData.audience}
-            variant='outlined'
-          />
-          <FormHelperText id='audience-helper-text'>
-            The CircleCI OIDC token audience. If left empty, the default value is your Organization
-            ID.
-          </FormHelperText>
-        </FormControl>
-
-        <Box sx={{ m: 1, position: 'relative' }}>
-          <Button
-            color='primary'
-            disabled={formDataQuery.isLoading || mutation.isLoading}
-            fullWidth
-            type='submit'
-            variant='contained'
-          >
-            Submit
-          </Button>
-          {(formDataQuery.isLoading || mutation.isLoading) && (
-            <CircularProgress
-              size={24}
-              sx={{
-                color: green[500],
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                marginTop: '-12px',
-                marginLeft: '-12px',
-              }}
-            />
-          )}
-        </Box>
-        {isAlertOpen && mutation.isSuccess && (
-          <Alert
-            onClose={handleClose}
-            icon={<CheckIcon fontSize='inherit' />}
-            severity={'success'}
-            sx={{ mt: 4 }}
-          >
-            This is a success alert — check it out!
-          </Alert>
-        )}
-        {isAlertOpen && mutation.isError && (
-          <Alert
-            onClose={handleClose}
-            icon={<ErrorIcon fontSize='inherit' />}
-            severity='error'
-            sx={{ mt: 4 }}
-          >
-            This is an error alert — check it out!
-          </Alert>
-        )}
+        <WebTriggerInput
+          handleCopyToClipboard={handleCopyToClipboard}
+          handleTooltipClose={() => setTooltipOpen(false)}
+          isTooltipOpen={isTooltipOpen}
+          isWebTriggerUrlLoading={webTriggerQuery.isLoading}
+          value={webTriggerQuery.data}
+        />
+        <FormDataInput
+          onChange={handleInputChange}
+          disabled={formDataQuery.isLoading || mutation.isLoading}
+          helperText={
+            <>
+              You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
+              <Link href='https://app.circleci.com/'>CircleCI web app.</Link>
+            </>
+          }
+          id='organizationId'
+          label='CircleCI Organization ID'
+          name='organizationId'
+          required={true}
+          value={formData.organizationId}
+        />
+        <FormDataInput
+          onChange={handleInputChange}
+          disabled={formDataQuery.isLoading || mutation.isLoading}
+          helperText={
+            <>
+              The OIDC token audience.{' '}
+              <b>If left empty, the default value is your Organization ID</b>.
+            </>
+          }
+          id='audience'
+          label='Audience'
+          name='audience'
+          value={formData.audience}
+          placeholder={formData.organizationId}
+        />
+        <SubmitButton isLoading={formDataQuery.isLoading || mutation.isLoading} />
+        <AlertsHandler alerts={alertsData} onClose={handleAlertClose} />
       </form>
     </Container>
   );
