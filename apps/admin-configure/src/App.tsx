@@ -1,75 +1,45 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Container, Link } from '@mui/material';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { getItem, setItem } from './api/storage';
 import { getWebTriggerUrl } from './api/webTrigger';
-import AlertsHandler from './components/AlertsHandler';
 import FormDataInput from './components/FormDataInput';
 import SubmitButton from './components/SubmitButton';
 import WebTriggerInput from './components/WebTriggerInput';
-import { STORAGE_KEY, WEB_TRIGGER_MODULE_KEY } from './constants/index';
+import {
+  FORM_DATA_MUTATION_ERROR,
+  FORM_DATA_MUTATION_SUCCESS,
+  FORM_DATA_QUERY_ERROR,
+  WEB_TRIGGER_QUERY_ERROR,
+} from './constants/errors';
+import { STORAGE_KEY, WEB_TRIGGER_MODULE_KEY } from './constants/forge';
 import FormData from './types/FormData';
 
 const MyForm = () => {
   const [formData, setFormData] = useState<FormData>({ organizationId: '', audience: '' });
-  const [isAlertOpen, setAlertOpen] = React.useState(false);
   const [isTooltipOpen, setTooltipOpen] = React.useState(false);
 
   const formDataQuery = useQuery({
     queryKey: ['formData', STORAGE_KEY],
     queryFn: () => getItem(STORAGE_KEY),
+    meta: { errorMessage: FORM_DATA_QUERY_ERROR },
   });
-
   const webTriggerQuery = useQuery({
     queryKey: ['webTriggerUrl', WEB_TRIGGER_MODULE_KEY],
     queryFn: () => getWebTriggerUrl(WEB_TRIGGER_MODULE_KEY),
+    meta: { errorMessage: WEB_TRIGGER_QUERY_ERROR },
   });
-
-  const mutation = useMutation({
+  const formDataMutation = useMutation({
     mutationFn: ({ key, formData }: { key: string; formData: FormData }) => setItem(key, formData),
+    meta: { errorMessage: FORM_DATA_MUTATION_ERROR, successMessage: FORM_DATA_MUTATION_SUCCESS },
   });
 
   useEffect(() => {
     if (!formDataQuery.isLoading && formDataQuery.data) setFormData(formDataQuery.data);
-    if (formDataQuery.isError) setAlertOpen(true);
-    if (webTriggerQuery.isError) setAlertOpen(true);
-  }, [formDataQuery.isLoading, formDataQuery.isError, formDataQuery.data, webTriggerQuery.isError]);
-
-  const alertsData = useMemo(
-    () => [
-      {
-        open: isAlertOpen && mutation.isSuccess,
-        severity: 'success',
-        message: 'Your changes have been saved!',
-      },
-      {
-        open: isAlertOpen && mutation.isError,
-        severity: 'error',
-        message:
-          'Something went wrong while saving your changes. Please try again or open an issue.',
-      },
-      {
-        open: isAlertOpen && formDataQuery.isError,
-        severity: 'error',
-        message:
-          'Something went wrong while fetching your data! Please refresh the page or open an issue.',
-      },
-      {
-        open: isAlertOpen && webTriggerQuery.isError,
-        severity: 'error',
-        message:
-          'Something went wrong while fetching your web trigger URL. Please refresh the page or open an issue.',
-      },
-    ],
-    [
-      isAlertOpen,
-      mutation.isSuccess,
-      mutation.isError,
-      formDataQuery.isError,
-      webTriggerQuery.isError,
-    ],
-  );
+  }, [formDataQuery.isLoading, formDataQuery.data]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -77,19 +47,11 @@ const MyForm = () => {
       [event.target.name]: event.target.value,
     });
   };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutation.mutate({ key: STORAGE_KEY, formData });
+    formDataMutation.mutate({ key: STORAGE_KEY, formData });
     setFormData({ ...formData });
-    setAlertOpen(true);
   };
-
-  const handleAlertClose = (_event?: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') return;
-    setAlertOpen(false);
-  };
-
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(webTriggerQuery.data || '');
     setTooltipOpen(true);
@@ -99,7 +61,6 @@ const MyForm = () => {
     }, 2000);
     return () => clearTimeout(timerId);
   };
-
   const handleTooltipClose = () => {
     setTooltipOpen(false);
   };
@@ -116,7 +77,7 @@ const MyForm = () => {
         />
         <FormDataInput
           onChange={handleInputChange}
-          disabled={formDataQuery.isLoading || mutation.isLoading}
+          disabled={formDataQuery.isLoading || formDataMutation.isLoading}
           helperText={
             <>
               You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
@@ -131,7 +92,7 @@ const MyForm = () => {
         />
         <FormDataInput
           onChange={handleInputChange}
-          disabled={formDataQuery.isLoading || mutation.isLoading}
+          disabled={formDataQuery.isLoading || formDataMutation.isLoading}
           helperText={
             <>
               The OIDC token audience.{' '}
@@ -144,8 +105,7 @@ const MyForm = () => {
           value={formData.audience}
           placeholder={formData.organizationId}
         />
-        <SubmitButton isLoading={formDataQuery.isLoading || mutation.isLoading} />
-        <AlertsHandler alerts={alertsData} onClose={handleAlertClose} />
+        <SubmitButton isLoading={formDataQuery.isLoading || formDataMutation.isLoading} />
       </form>
     </Container>
   );
