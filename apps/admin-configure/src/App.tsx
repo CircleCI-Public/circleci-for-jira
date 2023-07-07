@@ -1,6 +1,6 @@
 import { Container, Link } from '@mui/material';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { getItem, setItem } from './api/storage';
 import { getWebTriggerUrl } from './api/webTrigger';
@@ -9,7 +9,6 @@ import FormDataInput from './components/FormDataInput';
 import SubmitButton from './components/SubmitButton';
 import WebTriggerInput from './components/WebTriggerInput';
 import { STORAGE_KEY, WEB_TRIGGER_MODULE_KEY } from './constants/index';
-import { AlertData } from './types/AlertData';
 import FormData from './types/FormData';
 
 const MyForm = () => {
@@ -37,30 +36,40 @@ const MyForm = () => {
     if (webTriggerQuery.isError) setAlertOpen(true);
   }, [formDataQuery.isLoading, formDataQuery.isError, formDataQuery.data, webTriggerQuery.isError]);
 
-  const alertsData: AlertData[] = [
-    {
-      open: isAlertOpen && mutation.isSuccess,
-      severity: 'success',
-      message: 'Your changes have been saved!',
-    },
-    {
-      open: isAlertOpen && mutation.isError,
-      severity: 'error',
-      message: 'Something went wrong while saving your changes. Please try again or open an issue.',
-    },
-    {
-      open: isAlertOpen && formDataQuery.isError,
-      severity: 'error',
-      message:
-        'Something went wrong while fetching your data! Please refresh the page or open an issue.',
-    },
-    {
-      open: isAlertOpen && webTriggerQuery.isError,
-      severity: 'error',
-      message:
-        'Something went wrong while fetching your web trigger URL. Please refresh the page or open an issue.',
-    },
-  ];
+  const alertsData = useMemo(
+    () => [
+      {
+        open: isAlertOpen && mutation.isSuccess,
+        severity: 'success',
+        message: 'Your changes have been saved!',
+      },
+      {
+        open: isAlertOpen && mutation.isError,
+        severity: 'error',
+        message:
+          'Something went wrong while saving your changes. Please try again or open an issue.',
+      },
+      {
+        open: isAlertOpen && formDataQuery.isError,
+        severity: 'error',
+        message:
+          'Something went wrong while fetching your data! Please refresh the page or open an issue.',
+      },
+      {
+        open: isAlertOpen && webTriggerQuery.isError,
+        severity: 'error',
+        message:
+          'Something went wrong while fetching your web trigger URL. Please refresh the page or open an issue.',
+      },
+    ],
+    [
+      isAlertOpen,
+      mutation.isSuccess,
+      mutation.isError,
+      formDataQuery.isError,
+      webTriggerQuery.isError,
+    ],
+  );
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -85,9 +94,14 @@ const MyForm = () => {
     navigator.clipboard.writeText(webTriggerQuery.data || '');
     setTooltipOpen(true);
     // Close tooltip after 2 seconds.
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setTooltipOpen(false);
     }, 2000);
+    return () => clearTimeout(timerId);
+  };
+
+  const handleTooltipClose = () => {
+    setTooltipOpen(false);
   };
 
   return (
@@ -95,7 +109,7 @@ const MyForm = () => {
       <form onSubmit={handleSubmit}>
         <WebTriggerInput
           handleCopyToClipboard={handleCopyToClipboard}
-          handleTooltipClose={() => setTooltipOpen(false)}
+          handleTooltipClose={handleTooltipClose}
           isTooltipOpen={isTooltipOpen}
           isWebTriggerUrlLoading={webTriggerQuery.isLoading}
           value={webTriggerQuery.data}
