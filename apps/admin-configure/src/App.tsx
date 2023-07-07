@@ -49,8 +49,10 @@ const MyForm = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    formDataMutation.mutate({ key: STORAGE_KEY, formData });
-    setFormData({ ...formData });
+    const audience = formData.audience === '' ? formData.organizationId : formData.audience;
+    const updatedFormData = { ...formData, audience };
+    setFormData(updatedFormData);
+    formDataMutation.mutate({ key: STORAGE_KEY, formData: updatedFormData });
   };
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(webTriggerQuery.data || '');
