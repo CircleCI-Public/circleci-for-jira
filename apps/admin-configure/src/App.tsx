@@ -1,41 +1,29 @@
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Container, Link } from '@mui/material';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 
-import { setItem } from './api/storage';
-import { getWebTriggerUrl } from './api/webTrigger';
 import FormDataInput from './components/FormDataInput';
 import SubmitButton from './components/SubmitButton';
 import WebTriggerInput from './components/WebTriggerInput';
-import {
-  FORM_DATA_MUTATION_ERROR,
-  FORM_DATA_MUTATION_SUCCESS,
-  WEB_TRIGGER_QUERY_ERROR,
-} from './constants/errors';
-import { STORAGE_KEY, WEB_TRIGGER_MODULE_KEY } from './constants/forge';
+import { STORAGE_KEY } from './constants/forge';
 import useFormData from './hooks/useFormData';
-import FormData from './types/FormData';
+import useWebTriggerUrl from './hooks/useWebTriggerUrl';
 
 const MyForm = () => {
   const {
     formData,
-    formDataQueryInfo: { isLoading: isFormDataLoading },
+    formDataMutate,
+    formDataMutationInfo: { isLoading: isFormDataMutationLoading },
+    formDataQueryInfo: { isLoading: isFormDataQueryLoading },
     setFormData,
   } = useFormData();
-  const [isTooltipOpen, setTooltipOpen] = React.useState(false);
+  const {
+    webTriggerUrl: webTriggerUrlQueryData,
+    webTriggerUrlQueryInfo: { isLoading: isWebTriggerUrlLoading },
+  } = useWebTriggerUrl();
 
-  const webTriggerQuery = useQuery({
-    meta: { errorMessage: WEB_TRIGGER_QUERY_ERROR },
-    queryFn: () => getWebTriggerUrl(WEB_TRIGGER_MODULE_KEY),
-    queryKey: ['webTriggerUrl', WEB_TRIGGER_MODULE_KEY],
-    staleTime: Infinity,
-  });
-  const formDataMutation = useMutation({
-    mutationFn: ({ key, formData }: { key: string; formData: FormData }) => setItem(key, formData),
-    meta: { errorMessage: FORM_DATA_MUTATION_ERROR, successMessage: FORM_DATA_MUTATION_SUCCESS },
-  });
+  const [isTooltipOpen, setTooltipOpen] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -52,12 +40,11 @@ const MyForm = () => {
     const updatedFormData = { organizationId, audience };
 
     setFormData(updatedFormData);
-    formDataMutation.mutate({ key: STORAGE_KEY, formData: updatedFormData });
+    formDataMutate({ key: STORAGE_KEY, formData: updatedFormData });
   };
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(webTriggerQuery.data || '');
+    navigator.clipboard.writeText(webTriggerUrlQueryData || '');
     setTooltipOpen(true);
-    // Close tooltip after 2 seconds.
     const timerId = setTimeout(() => {
       setTooltipOpen(false);
     }, 2000);
@@ -74,12 +61,12 @@ const MyForm = () => {
           handleCopyToClipboard={handleCopyToClipboard}
           handleTooltipClose={handleTooltipClose}
           isTooltipOpen={isTooltipOpen}
-          isWebTriggerUrlLoading={webTriggerQuery.isLoading}
-          value={webTriggerQuery.data}
+          isWebTriggerUrlLoading={isWebTriggerUrlLoading}
+          value={webTriggerUrlQueryData}
         />
         <FormDataInput
           onChange={handleInputChange}
-          disabled={isFormDataLoading || formDataMutation.isLoading}
+          disabled={isFormDataQueryLoading || isFormDataMutationLoading}
           helperText={
             <>
               You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
@@ -94,7 +81,7 @@ const MyForm = () => {
         />
         <FormDataInput
           onChange={handleInputChange}
-          disabled={isFormDataLoading || formDataMutation.isLoading}
+          disabled={isFormDataQueryLoading || isFormDataMutationLoading}
           helperText={
             <>
               The OIDC token audience.{' '}
@@ -107,7 +94,7 @@ const MyForm = () => {
           value={formData?.audience || ''}
           placeholder={formData?.organizationId}
         />
-        <SubmitButton isLoading={isFormDataLoading || formDataMutation.isLoading} />
+        <SubmitButton isLoading={isFormDataQueryLoading || isFormDataMutationLoading} />
       </form>
     </Container>
   );

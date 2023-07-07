@@ -1,8 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
-import { getItem } from '../api/storage';
-import { FORM_DATA_QUERY_ERROR } from '../constants/errors';
+import { getItem, setItem } from '../api/storage';
+import {
+  FORM_DATA_MUTATION_ERROR,
+  FORM_DATA_MUTATION_SUCCESS,
+  FORM_DATA_QUERY_ERROR,
+} from '../constants/errors';
 import { STORAGE_KEY } from '../constants/forge';
 import FormData from '../types/FormData';
 
@@ -16,8 +20,15 @@ const useFormData = () => {
     enabled: !draft,
   });
 
+  const { mutate, ...mutationInfo } = useMutation({
+    mutationFn: ({ key, formData }: { key: string; formData: FormData }) => setItem(key, formData),
+    meta: { errorMessage: FORM_DATA_MUTATION_ERROR, successMessage: FORM_DATA_MUTATION_SUCCESS },
+  });
+
   return {
     formData: draft ?? data,
+    formDataMutate: mutate,
+    formDataMutationInfo: mutationInfo,
     formDataQueryInfo: queryInfo,
     setFormData: setDraft,
   };
