@@ -2,9 +2,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Container, Link } from '@mui/material';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { getItem, setItem } from './api/storage';
+import { setItem } from './api/storage';
 import { getWebTriggerUrl } from './api/webTrigger';
 import FormDataInput from './components/FormDataInput';
 import SubmitButton from './components/SubmitButton';
@@ -12,22 +12,20 @@ import WebTriggerInput from './components/WebTriggerInput';
 import {
   FORM_DATA_MUTATION_ERROR,
   FORM_DATA_MUTATION_SUCCESS,
-  FORM_DATA_QUERY_ERROR,
   WEB_TRIGGER_QUERY_ERROR,
 } from './constants/errors';
 import { STORAGE_KEY, WEB_TRIGGER_MODULE_KEY } from './constants/forge';
+import useFormData from './hooks/useFormData';
 import FormData from './types/FormData';
 
 const MyForm = () => {
-  const [formData, setFormData] = useState<FormData>({ organizationId: '', audience: '' });
+  const {
+    formData,
+    formDataQueryInfo: { isLoading: isFormDataLoading },
+    setFormData,
+  } = useFormData();
   const [isTooltipOpen, setTooltipOpen] = React.useState(false);
 
-  const formDataQuery = useQuery({
-    meta: { errorMessage: FORM_DATA_QUERY_ERROR },
-    queryFn: () => getItem(STORAGE_KEY),
-    queryKey: ['formData', STORAGE_KEY],
-    staleTime: Infinity,
-  });
   const webTriggerQuery = useQuery({
     meta: { errorMessage: WEB_TRIGGER_QUERY_ERROR },
     queryFn: () => getWebTriggerUrl(WEB_TRIGGER_MODULE_KEY),
@@ -39,10 +37,6 @@ const MyForm = () => {
     meta: { errorMessage: FORM_DATA_MUTATION_ERROR, successMessage: FORM_DATA_MUTATION_SUCCESS },
   });
 
-  useEffect(() => {
-    if (!formDataQuery.isLoading && formDataQuery.data) setFormData(formDataQuery.data);
-  }, [formDataQuery.isLoading, formDataQuery.data]);
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -51,8 +45,12 @@ const MyForm = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const audience = formData.audience === '' ? formData.organizationId : formData.audience;
-    const updatedFormData = { ...formData, audience };
+    if (!formData) throw new Error('Form data is undefined.');
+
+    const organizationId = formData.organizationId as string;
+    const audience = formData?.audience === '' ? organizationId : (formData.audience as string);
+    const updatedFormData = { organizationId, audience };
+
     setFormData(updatedFormData);
     formDataMutation.mutate({ key: STORAGE_KEY, formData: updatedFormData });
   };
@@ -81,7 +79,7 @@ const MyForm = () => {
         />
         <FormDataInput
           onChange={handleInputChange}
-          disabled={formDataQuery.isLoading || formDataMutation.isLoading}
+          disabled={isFormDataLoading || formDataMutation.isLoading}
           helperText={
             <>
               You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
@@ -92,11 +90,11 @@ const MyForm = () => {
           label='CircleCI Organization ID'
           name='organizationId'
           required={true}
-          value={formData.organizationId}
+          value={formData?.organizationId || ''}
         />
         <FormDataInput
           onChange={handleInputChange}
-          disabled={formDataQuery.isLoading || formDataMutation.isLoading}
+          disabled={isFormDataLoading || formDataMutation.isLoading}
           helperText={
             <>
               The OIDC token audience.{' '}
@@ -106,10 +104,10 @@ const MyForm = () => {
           id='audience'
           label='Audience'
           name='audience'
-          value={formData.audience}
-          placeholder={formData.organizationId}
+          value={formData?.audience || ''}
+          placeholder={formData?.organizationId}
         />
-        <SubmitButton isLoading={formDataQuery.isLoading || formDataMutation.isLoading} />
+        <SubmitButton isLoading={isFormDataLoading || formDataMutation.isLoading} />
       </form>
     </Container>
   );
