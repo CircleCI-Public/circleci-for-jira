@@ -23,14 +23,16 @@ const MyForm = () => {
   const [isTooltipOpen, setTooltipOpen] = React.useState(false);
 
   const formDataQuery = useQuery({
-    queryKey: ['formData', STORAGE_KEY],
-    queryFn: () => getItem(STORAGE_KEY),
     meta: { errorMessage: FORM_DATA_QUERY_ERROR },
+    queryFn: () => getItem(STORAGE_KEY),
+    queryKey: ['formData', STORAGE_KEY],
+    staleTime: Infinity,
   });
   const webTriggerQuery = useQuery({
-    queryKey: ['webTriggerUrl', WEB_TRIGGER_MODULE_KEY],
-    queryFn: () => getWebTriggerUrl(WEB_TRIGGER_MODULE_KEY),
     meta: { errorMessage: WEB_TRIGGER_QUERY_ERROR },
+    queryFn: () => getWebTriggerUrl(WEB_TRIGGER_MODULE_KEY),
+    queryKey: ['webTriggerUrl', WEB_TRIGGER_MODULE_KEY],
+    staleTime: Infinity,
   });
   const formDataMutation = useMutation({
     mutationFn: ({ key, formData }: { key: string; formData: FormData }) => setItem(key, formData),
