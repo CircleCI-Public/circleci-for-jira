@@ -1,9 +1,8 @@
 import './App.css';
 
 import { ThemeProvider } from '@emotion/react';
-import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import { AtlassianTheme, Link, useContextURL } from 'ui';
+import { AtlassianTheme, Link, Button, useContextURL } from 'ui';
 
 const InfoBox = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.grey[400],
