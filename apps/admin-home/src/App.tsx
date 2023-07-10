@@ -23,7 +23,6 @@ const ButtonBox = styled('div')(({ theme }) => ({
 function App() {
 
   const appUrls = useContextURL();
-
   return (
     <>
       <ThemeProvider theme={AtlassianTheme}>
