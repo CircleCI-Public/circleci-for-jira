@@ -17,7 +17,9 @@
     "lint": "eslint \"src/**/*.ts*\""
   },
   "dependencies": {
-    "@mui/material": "workspace:*"
+    "@forge/bridge": "^2.6.0",
+    "@mui/material": "workspace:*",
+    "@tanstack/react-query": "^4.29.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

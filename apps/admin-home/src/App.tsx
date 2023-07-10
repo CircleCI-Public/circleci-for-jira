@@ -1,12 +1,9 @@
 import './App.css';
 
 import { ThemeProvider } from '@emotion/react';
-import { view } from '@forge/bridge';
-import { FullContext } from '@forge/bridge/out/types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import { useQuery } from '@tanstack/react-query';
-import { AtlassianTheme, Link } from 'ui';
+import { AtlassianTheme, Link, useContextURL } from 'ui';
 
 const InfoBox = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.grey[400],
@@ -22,27 +19,9 @@ const ButtonBox = styled('div')(({ theme }) => ({
   },
 }));
 
-type AppUrls = {
-  configure: string;
-  getStarted: string;
-};
-
 function App() {
-  const useContext = (select: (data: FullContext) => AppUrls) =>
-    useQuery({ queryKey: ['context'], queryFn: () => view.getContext(), select });
 
-  const useContextUrl = () =>
-    useContext(data => {
-      const siteUrl = data.siteUrl;
-      const localId = data.localId;
-      const localIdExtension = localId.split('extension/')[1];
-      return {
-        configure: `${siteUrl}/jira/settings/apps/configure/${localIdExtension}`,
-        getStarted: `${siteUrl}/jira/settings/apps/get-started/${localIdExtension}`,
-      };
-    });
-
-  const { data: appUrls, isLoading } = useContextUrl();
+  const appUrls = useContextURL();
 
   return (
     <>
@@ -72,14 +51,13 @@ function App() {
                 Support:&nbsp;
                 <Link
                   href='https://support.circleci.com/hc/en-us/requests/new?ticket_form_id=855268'
-                  target='_blank'
                 >
                   Submit a ticket
                 </Link>
               </p>
               <p>
                 Submit bugs:&nbsp;
-                <Link href='https://github.com/CircleCI-Public/circleci-for-jira' target='_blank'>
+                <Link href='https://github.com/CircleCI-Public/circleci-for-jira'>
                   Github
                 </Link>
               </p>
@@ -90,14 +68,14 @@ function App() {
               <Button
                 variant='contained'
                 color='primary'
-                href={!isLoading ? appUrls?.getStarted : ''}
+                href={appUrls?.getStarted}
               >
                 Get Started
               </Button>
               <Button
                 variant='contained'
                 color='secondary'
-                href={!isLoading ? appUrls?.configure : ''}
+                href={appUrls?.configure}
               >
                 Configure
               </Button>
