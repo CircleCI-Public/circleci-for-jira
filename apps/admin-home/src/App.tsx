@@ -28,7 +28,7 @@ type AppUrls = {
 };
 
 function App() {
-  const useContext = (select: (data: FullContext) => FullContext | undefined | AppUrls) =>
+  const useContext = (select: (data: FullContext) => AppUrls) =>
     useQuery({ queryKey: ['context'], queryFn: () => view.getContext(), select });
 
   const useContextUrl = () =>
@@ -87,11 +87,19 @@ function App() {
           </section>
           <section>
             <ButtonBox>
-              <Button variant='contained' color='primary' href={useContextUrl}>
-                Configure
-              </Button>
-              <Button variant='contained' color='secondary' href={appUrls.getStarted}>
+              <Button
+                variant='contained'
+                color='primary'
+                href={!isLoading ? appUrls?.getStarted : ''}
+              >
                 Get Started
+              </Button>
+              <Button
+                variant='contained'
+                color='secondary'
+                href={!isLoading ? appUrls?.configure : ''}
+              >
+                Configure
               </Button>
             </ButtonBox>
           </section>
