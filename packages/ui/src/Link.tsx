@@ -7,11 +7,7 @@ interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 
 export const Link = (props: LinkProps) => {
   const { children, href, ...rest } = props;
-
-  if (rest.target === '_blank') {
-    rest.rel = 'noopener noreferrer';
-  }
-
+  
   return (
     <a href={href} {...rest}>
       {children}
