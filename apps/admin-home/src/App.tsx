@@ -14,8 +14,9 @@ const InfoBox = styled('div')(({ theme }) => ({
 
 const ButtonBox = styled('div')(({ theme }) => ({
   margin: theme.spacing(2),
-  '& > button': {
-    margin: theme.spacing(1),
+  '& > a': {
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
   },
 }));
 
