@@ -2,6 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Container, Link } from '@mui/material';
 import React, { useState } from 'react';
+import { validate as uuidValidate } from 'uuid';
 
 import FormDataInput from './components/FormDataInput';
 import SubmitButton from './components/SubmitButton';
@@ -24,8 +25,14 @@ const MyForm = () => {
   } = useWebTriggerUrl();
 
   const [isTooltipOpen, setTooltipOpen] = useState(false);
+  const [isOrgIdInvalid, setOrgIdInvalid] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Clear the error state when the user starts typing in the organizationId field.
+    if (event.target.name === 'organizationId') {
+      setOrgIdInvalid(false);
+    }
+
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -36,9 +43,13 @@ const MyForm = () => {
     if (!formData) throw new Error('Form data is undefined.');
 
     const organizationId = formData.organizationId as string;
+    if (!uuidValidate(organizationId)) {
+      setOrgIdInvalid(true);
+      return;
+    }
+
     const audience = formData?.audience === '' ? organizationId : (formData.audience as string);
     const updatedFormData = { organizationId, audience };
-
     setFormData(updatedFormData);
     formDataMutate({ key: STORAGE_KEY, formData: updatedFormData });
   };
@@ -67,7 +78,8 @@ const MyForm = () => {
         <FormDataInput
           onChange={handleInputChange}
           disabled={isFormDataQueryLoading || isFormDataMutationLoading}
-          helperText={
+          error={isOrgIdInvalid}
+          formHelperText={
             <>
               You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
               <Link href='https://app.circleci.com/'>CircleCI web app.</Link>
@@ -78,11 +90,17 @@ const MyForm = () => {
           name='organizationId'
           required={true}
           value={formData?.organizationId || ''}
+          {...(isOrgIdInvalid
+            ? {
+                errorHelperText:
+                  'Please ensure the format is a valid UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.',
+              }
+            : {})}
         />
         <FormDataInput
           onChange={handleInputChange}
           disabled={isFormDataQueryLoading || isFormDataMutationLoading}
-          helperText={
+          formHelperText={
             <>
               The OIDC token audience.{' '}
               <b>If left empty, the default value is your Organization ID</b>.
