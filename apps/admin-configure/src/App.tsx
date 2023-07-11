@@ -26,11 +26,11 @@ const MyForm = () => {
   } = useWebTriggerUrl();
 
   const [isTooltipOpen, setTooltipOpen] = useState(false);
-  const [isOrgIdInvalid, setOrgIdInvalid] = useState(false);
+  const [isOrgIdValid, setOrgIdValid] = useState(true);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Clear the error state when the user starts typing in the organizationId field.
-    if (event.target.name === 'organizationId') setOrgIdInvalid(false);
+    if (event.target.name === 'organizationId') setOrgIdValid(true);
 
     setFormData({
       ...formData,
@@ -43,7 +43,7 @@ const MyForm = () => {
 
     const organizationId = formData.organizationId as string;
     if (!uuidValidate(organizationId)) {
-      setOrgIdInvalid(true);
+      setOrgIdValid(false);
       return;
     }
 
@@ -78,24 +78,25 @@ const MyForm = () => {
           <FormDataInput
             onChange={handleInputChange}
             disabled={isFormDataQueryLoading || isFormDataMutationLoading}
-            error={isOrgIdInvalid}
-            formHelperText={
-              <>
-                You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
-                <Link href='https://app.circleci.com/'>CircleCI web app.</Link>
-              </>
-            }
+            error={!isOrgIdValid}
             id='organizationId'
             label='CircleCI Organization ID'
             name='organizationId'
             required={true}
             value={formData?.organizationId || ''}
-            {...(isOrgIdInvalid
+            {...(isOrgIdValid
               ? {
+                  formHelperText: (
+                    <>
+                      You can find it by navigating to <b>Organization Settings &gt; Overview</b> in
+                      the <Link href='https://app.circleci.com/'>CircleCI web app.</Link>
+                    </>
+                  ),
+                }
+              : {
                   errorHelperText:
                     'Please ensure the format is a valid UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.',
-                }
-              : {})}
+                })}
           />
           <FormDataInput
             onChange={handleInputChange}

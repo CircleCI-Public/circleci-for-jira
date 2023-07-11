@@ -8,7 +8,7 @@ type FormDataInputProps = {
   disabled: boolean;
   error?: boolean;
   errorHelperText?: string;
-  formHelperText: React.ReactNode;
+  formHelperText?: React.ReactNode;
   id: string;
   label: string;
   name: string;
