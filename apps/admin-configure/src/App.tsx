@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Container, Link } from '@mui/material';
+import { Container } from '@mui/material';
+import { Link } from 'ui'
 import React, { useState } from 'react';
 import { validate as uuidValidate } from 'uuid';
 
