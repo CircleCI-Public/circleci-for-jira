@@ -6,7 +6,9 @@ import React from 'react';
 type FormDataInputProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled: boolean;
-  helperText: React.ReactNode;
+  error?: boolean;
+  errorHelperText?: string;
+  formHelperText: React.ReactNode;
   id: string;
   label: string;
   name: string;
@@ -18,7 +20,9 @@ type FormDataInputProps = {
 const FormDataInput: React.FC<FormDataInputProps> = ({
   onChange,
   disabled,
-  helperText,
+  error = false,
+  errorHelperText = '',
+  formHelperText,
   id,
   label,
   name,
@@ -31,6 +35,8 @@ const FormDataInput: React.FC<FormDataInputProps> = ({
       <TextField
         autoFocus
         disabled={disabled}
+        error={error}
+        helperText={errorHelperText}
         id={id}
         label={label}
         name={name}
@@ -41,7 +47,7 @@ const FormDataInput: React.FC<FormDataInputProps> = ({
         variant='outlined'
         InputLabelProps={{ shrink: true }}
       />
-      <FormHelperText id={`${id}-helper-text`}>{helperText}</FormHelperText>
+      <FormHelperText id={`${id}-helper-text`}>{formHelperText}</FormHelperText>
     </FormControl>
   );
 };
