@@ -1,8 +1,8 @@
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Container } from '@mui/material';
-import { Link } from 'ui'
+import { Container, ThemeProvider } from '@mui/material';
 import React, { useState } from 'react';
+import { AtlassianTheme, Link } from 'ui';
 import { validate as uuidValidate } from 'uuid';
 
 import FormDataInput from './components/FormDataInput';
@@ -30,9 +30,7 @@ const MyForm = () => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Clear the error state when the user starts typing in the organizationId field.
-    if (event.target.name === 'organizationId') {
-      setOrgIdInvalid(false);
-    }
+    if (event.target.name === 'organizationId') setOrgIdInvalid(false);
 
     setFormData({
       ...formData,
@@ -67,55 +65,57 @@ const MyForm = () => {
   };
 
   return (
-    <Container component='main' maxWidth='sm'>
-      <form onSubmit={handleSubmit}>
-        <WebTriggerInput
-          handleCopyToClipboard={handleCopyToClipboard}
-          handleTooltipClose={handleTooltipClose}
-          isTooltipOpen={isTooltipOpen}
-          isWebTriggerUrlLoading={isWebTriggerUrlLoading}
-          value={webTriggerUrlQueryData}
-        />
-        <FormDataInput
-          onChange={handleInputChange}
-          disabled={isFormDataQueryLoading || isFormDataMutationLoading}
-          error={isOrgIdInvalid}
-          formHelperText={
-            <>
-              You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
-              <Link href='https://app.circleci.com/'>CircleCI web app.</Link>
-            </>
-          }
-          id='organizationId'
-          label='CircleCI Organization ID'
-          name='organizationId'
-          required={true}
-          value={formData?.organizationId || ''}
-          {...(isOrgIdInvalid
-            ? {
-                errorHelperText:
-                  'Please ensure the format is a valid UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.',
-              }
-            : {})}
-        />
-        <FormDataInput
-          onChange={handleInputChange}
-          disabled={isFormDataQueryLoading || isFormDataMutationLoading}
-          formHelperText={
-            <>
-              The OIDC token audience.{' '}
-              <b>If left empty, the default value is your Organization ID</b>.
-            </>
-          }
-          id='audience'
-          label='Audience'
-          name='audience'
-          value={formData?.audience || ''}
-          placeholder={formData?.organizationId}
-        />
-        <SubmitButton isLoading={isFormDataQueryLoading || isFormDataMutationLoading} />
-      </form>
-    </Container>
+    <ThemeProvider theme={AtlassianTheme}>
+      <Container component='main' maxWidth='sm'>
+        <form onSubmit={handleSubmit}>
+          <WebTriggerInput
+            handleCopyToClipboard={handleCopyToClipboard}
+            handleTooltipClose={handleTooltipClose}
+            isTooltipOpen={isTooltipOpen}
+            isWebTriggerUrlLoading={isWebTriggerUrlLoading}
+            value={webTriggerUrlQueryData}
+          />
+          <FormDataInput
+            onChange={handleInputChange}
+            disabled={isFormDataQueryLoading || isFormDataMutationLoading}
+            error={isOrgIdInvalid}
+            formHelperText={
+              <>
+                You can find it by navigating to <b>Organization Settings &gt; Overview</b> in the{' '}
+                <Link href='https://app.circleci.com/'>CircleCI web app.</Link>
+              </>
+            }
+            id='organizationId'
+            label='CircleCI Organization ID'
+            name='organizationId'
+            required={true}
+            value={formData?.organizationId || ''}
+            {...(isOrgIdInvalid
+              ? {
+                  errorHelperText:
+                    'Please ensure the format is a valid UUID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.',
+                }
+              : {})}
+          />
+          <FormDataInput
+            onChange={handleInputChange}
+            disabled={isFormDataQueryLoading || isFormDataMutationLoading}
+            formHelperText={
+              <>
+                The OIDC token audience.{' '}
+                <b>If left empty, the default value is your Organization ID</b>.
+              </>
+            }
+            id='audience'
+            label='Audience'
+            name='audience'
+            value={formData?.audience || ''}
+            placeholder={formData?.organizationId}
+          />
+          <SubmitButton isLoading={isFormDataQueryLoading || isFormDataMutationLoading} />
+        </form>
+      </Container>
+    </ThemeProvider>
   );
 };
 
