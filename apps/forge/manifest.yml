@@ -13,13 +13,6 @@ modules:
       title: CircleCI for Jira - Configure
       icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
       useAsConfig: true
-    - key: circleci-for-jira-get-started-page
-      resource: admin-get-started
-      resolver:
-        function: resolver
-      title: CircleCI for Jira - Get Started
-      icon: https://avatars.githubusercontent.com/u/1231870?s=200&v=4
-      useAsGetStarted: true
   webtrigger:
     - key: orb-webtrigger
       function: handle-orb-request
@@ -49,10 +42,6 @@ resources:
     path: ../admin-configure/dist
     tunnel:
       port: 3001
-  - key: admin-get-started
-    path: ../admin-get-started/dist
-    tunnel:
-      port: 3002
 app:
   id: ari:cloud:ecosystem::app/128227a1-b1f0-4c2b-b7b6-1b32a1afee83
   runtime:
