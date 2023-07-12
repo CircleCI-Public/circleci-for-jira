@@ -56,10 +56,20 @@ export class MissingKeyIdError extends WebTriggerErrorResponse {
 export class MissingOrganizationIdError extends WebTriggerErrorResponse {
   constructor() {
     super(
-      'Server error. Organization ID is missing. Please open an issue on GitHub or contact support.',
+      'The Organization ID is missing. Ensure that the Organization ID is set in the Forge App Configuration page.',
       500,
     );
     this.name = 'MissingOrganizationIdError';
+  }
+}
+
+export class MissingJwtAudienceError extends WebTriggerErrorResponse {
+  constructor() {
+    super(
+      'The JWT Audience is missing. Ensure that the JWT audience is set in the Forge App Configuration page.',
+      500,
+    );
+    this.name = 'MissingJwtAudienceError';
   }
 }
 

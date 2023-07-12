@@ -22,8 +22,12 @@ export async function verifyAuth(request: WebTriggerRequest): Promise<void> {
 
   const userConfig = await getUserConfig();
   const orgId = userConfig?.organizationId;
+  const jwtAudience = userConfig?.jwtAudience;
+
   if (!orgId || typeof orgId !== 'string' || orgId.trim() === '')
     throw new Errors.MissingOrganizationIdError();
+  if (!jwtAudience || typeof jwtAudience !== 'string' || jwtAudience.trim() === '')
+    throw new Errors.MissingJwtAudienceError();
 
   const token = authHeader[0];
   const decodedToken = decode(token, { complete: true });
@@ -36,7 +40,7 @@ export async function verifyAuth(request: WebTriggerRequest): Promise<void> {
 
   const verifiedToken = verify(token, pem, {
     algorithms: ['RS256'],
-    audience: [orgId],
+    audience: [jwtAudience],
     issuer: [`https://oidc.circleci.com/org/${orgId}`],
   });
   if (verifiedToken === undefined) throw new Errors.InvalidTokenError();
