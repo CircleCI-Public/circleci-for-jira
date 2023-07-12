@@ -1,9 +1,10 @@
+import { fetch, storage } from '@forge/api';
 import { decode, verify } from 'jsonwebtoken';
 import jwkToPem, { RSA } from 'jwk-to-pem';
-import { fetch } from '@forge/api';
 
+import { STORAGE_KEY } from '../constants/storage';
 import * as Errors from '../types/errors';
-import { JWKS, WebTriggerRequest } from '../types/types';
+import { JWKS, UserConfiguration, WebTriggerRequest } from '../types/types';
 import { isBuildPayload, isDeploymentPayload } from './payloadUtils';
 
 export function verifyBody(request: WebTriggerRequest): void {
@@ -19,8 +20,10 @@ export async function verifyAuth(request: WebTriggerRequest): Promise<void> {
   if (authHeader === undefined) throw new Errors.MissingAuthHeaderError();
   if (authHeader.length === 0 || authHeader[0] === '') throw new Errors.EmptyAuthHeaderError();
 
-  const orgId = getOrganizationId();
-  if (orgId === '') throw new Errors.MissingOrganizationIdError();
+  const userConfig = await getUserConfig();
+  const orgId = userConfig?.organizationId;
+  if (!orgId || typeof orgId !== 'string' || orgId.trim() === '')
+    throw new Errors.MissingOrganizationIdError();
 
   const token = authHeader[0];
   const decodedToken = decode(token, { complete: true });
@@ -49,8 +52,6 @@ async function getJwk(uri: string, kid: string): Promise<RSA> {
   return { e: jwk.e, kty: 'RSA', n: jwk.n };
 }
 
-function getOrganizationId(): string {
-  // Temporary solution until we have a better way to get the organization ID
-  // We will likely use the storage API to store and retrieve it in the future
-  return process.env.ORGANIZATION_ID ?? '';
+async function getUserConfig(): Promise<UserConfiguration | undefined> {
+  return await storage.get(STORAGE_KEY);
 }
