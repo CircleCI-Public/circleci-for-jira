@@ -55,10 +55,6 @@ const MyForm = () => {
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(webTriggerUrlQueryData || '');
     setTooltipOpen(true);
-    const timerId = setTimeout(() => {
-      setTooltipOpen(false);
-    }, 2000);
-    return () => clearTimeout(timerId);
   };
   const handleTooltipClose = () => {
     setTooltipOpen(false);

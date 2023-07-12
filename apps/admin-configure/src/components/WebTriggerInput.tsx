@@ -46,14 +46,17 @@ const WebTriggerInput: React.FC<WebTriggerInputProps> = ({
                     PopperProps={{
                       disablePortal: true,
                     }}
-                    onClose={handleTooltipClose}
                     open={isTooltipOpen}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
                     title='Copied!'
                   >
-                    <IconButton onClick={handleCopyToClipboard} disabled={isWebTriggerUrlLoading}>
+                    <IconButton
+                      onClick={handleCopyToClipboard}
+                      onMouseLeave={handleTooltipClose}
+                      disabled={isWebTriggerUrlLoading}
+                    >
                       {isTooltipOpen ? <CheckIcon sx={{ color: green[500] }} /> : <FileCopyIcon />}
                     </IconButton>
                   </Tooltip>
