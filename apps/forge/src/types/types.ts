@@ -125,7 +125,7 @@ export enum LoggingLevel {
 
 export interface UserConfiguration {
   organizationId?: string;
-  jwtAudience?: string;
+  audience?: string;
 }
 
 export interface SetStorageValuePayload {

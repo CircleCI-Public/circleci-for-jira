@@ -22,7 +22,7 @@ export async function verifyAuth(request: WebTriggerRequest): Promise<void> {
 
   const userConfig = await getUserConfig();
   const orgId = userConfig?.organizationId;
-  const jwtAudience = userConfig?.jwtAudience;
+  const jwtAudience = userConfig?.audience;
 
   if (!orgId || typeof orgId !== 'string' || orgId.trim() === '')
     throw new Errors.MissingOrganizationIdError();
