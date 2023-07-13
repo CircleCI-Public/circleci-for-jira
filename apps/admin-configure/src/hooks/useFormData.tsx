@@ -15,7 +15,11 @@ const useFormData = () => {
 
   const { data, ...queryInfo } = useQuery({
     meta: { errorMessage: FORM_DATA_QUERY_ERROR },
-    queryFn: () => getItem(STORAGE_KEY),
+    queryFn: async () => {
+      const response = await getItem(STORAGE_KEY);
+      if (!response) return { organizationId: '', audience: '' };
+      return response as FormData;
+    },
     queryKey: ['formData', STORAGE_KEY],
     enabled: !draft,
   });

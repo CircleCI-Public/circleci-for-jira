@@ -11,7 +11,7 @@ interface SetItemResponse {
   error: string | undefined;
 }
 
-export async function getItem(storageKey: string): Promise<FormData> {
+export async function getItem(storageKey: string): Promise<FormData | undefined> {
   const { error, storageValue }: GetItemResponse = await invoke('getStorageValue', {
     storageKey,
   });
