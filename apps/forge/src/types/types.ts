@@ -123,9 +123,9 @@ export enum LoggingLevel {
   LOG = 4,
 }
 
-export interface ConfigurePageForm {
+export interface UserConfiguration {
   organizationId?: string;
-  jwtAudience?: string;
+  audience?: string;
 }
 
 export interface SetStorageValuePayload {

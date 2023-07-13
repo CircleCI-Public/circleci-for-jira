@@ -1,5 +1,5 @@
 {
-  "name": "circleci-for-jira",
+  "name": "forge",
   "version": "1.0.0",
   "scripts": {
     "deploy": "forge deploy --no-verify",
