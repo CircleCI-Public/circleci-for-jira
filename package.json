@@ -3,7 +3,9 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "deploy": "turbo run deploy",
+    "deploy:development": "turbo run deploy:development",
+    "deploy:production": "turbo run deploy:production",
+    "deploy:staging": "turbo run deploy:staging",
     "dev": "turbo run dev --no-cache --continue",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",

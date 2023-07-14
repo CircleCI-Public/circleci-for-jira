@@ -8,7 +8,15 @@
     "clean": {
       "cache": false
     },
-    "deploy": {
+    "deploy:development": {
+      "cache": false,
+      "dependsOn": [ "^build", "build" ]
+    },
+    "deploy:staging": {
+      "cache": false,
+      "dependsOn": [ "^build", "build" ]
+    },
+    "deploy:production": {
       "cache": false,
       "dependsOn": [ "^build", "build" ]
     },
