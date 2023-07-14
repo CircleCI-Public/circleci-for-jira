@@ -2,7 +2,9 @@
   "name": "forge",
   "version": "1.0.0",
   "scripts": {
-    "deploy": "forge deploy --no-verify",
+    "deploy:development": "forge deploy -e development --no-verify",
+    "deploy:production": "forge deploy -e production --no-verify",
+    "deploy:staging": "forge deploy -e staging --no-verify",
     "tunnel": "printf '%s\n' 'run the following in /apps/forge: \"FORGE_DEV_TUNNEL=true forge tunnel\"'"
   },
   "license": "MIT",
