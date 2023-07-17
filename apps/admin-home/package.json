@@ -15,20 +15,20 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@forge/bridge": "^2.6.0",
-    "@mui/material": "workspace:*",
-    "@tanstack/react-query": "^4.29.19",
+    "@mui/material": "^5.14.0",
+    "@tanstack/react-query": "^4.29.25",
+    "hooks": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "workspace:*",
-    "hooks": "workspace:*"
+    "ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.0.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react-swc": "^3.3.2",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4"
   }
 }

@@ -18,16 +18,16 @@
   },
   "dependencies": {
     "@forge/bridge": "^2.6.0",
-    "@mui/material": "workspace:*",
-    "@tanstack/react-query": "^4.29.19"
+    "@mui/material": "^5.14.0",
+    "@tanstack/react-query": "^4.29.25"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
     "eslint-config-custom": "workspace:*",
     "react": "^18.2.0",
     "tsconfig": "workspace:*",
     "tsup": "^7.1.0",
-    "typescript": "^5.1.5"
+    "typescript": "^5.1.6"
   }
 }
