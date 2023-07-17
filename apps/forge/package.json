@@ -22,7 +22,7 @@
     "@forge/api": "^2.18.2",
     "@forge/resolver": "^1.5.12",
     "@forge/ui": "^1.9.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.1",
     "jwk-to-pem": "^2.0.5",
     "react": "^18.2.0",
     "uuid": "^9.0.0"
