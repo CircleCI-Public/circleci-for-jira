@@ -23,7 +23,7 @@
     "hooks": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
+    "@types/react": "^18.2.15",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint-config-custom": "workspace:*",

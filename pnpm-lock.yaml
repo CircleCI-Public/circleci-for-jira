@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   '@mui/material': ^5.13.7
   '@tanstack/react-query': ^4.29.19
@@ -27,19 +31,19 @@ importers:
     dependencies:
       '@emotion/react':
         specifier: ^11.11.1
-        version: 11.11.1(@types/react@18.2.12)(react@18.2.0)
+        version: 11.11.1(@types/react@18.2.15)(react@18.2.0)
       '@emotion/styled':
         specifier: ^11.11.0
-        version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.12)(react@18.2.0)
+        version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0)
       '@forge/bridge':
         specifier: ^2.6.0
         version: 2.6.0
       '@mui/icons-material':
         specifier: ^5.13.7
-        version: 5.13.7(@mui/material@5.13.7)(@types/react@18.2.12)(react@18.2.0)
+        version: 5.13.7(@mui/material@5.13.7)(@types/react@18.2.15)(react@18.2.0)
       '@mui/material':
         specifier: ^5.13.7
-        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.19
         version: 4.29.19(react-dom@18.2.0)(react@18.2.0)
@@ -60,8 +64,8 @@ importers:
         version: 9.0.0
     devDependencies:
       '@types/react':
-        specifier: ^18.0.37
-        version: 18.2.12
+        specifier: ^18.2.15
+        version: 18.2.15
       '@types/react-dom':
         specifier: ^18.0.11
         version: 18.0.11
@@ -88,16 +92,16 @@ importers:
     dependencies:
       '@emotion/react':
         specifier: ^11.11.1
-        version: 11.11.1(@types/react@18.2.12)(react@18.2.0)
+        version: 11.11.1(@types/react@18.2.15)(react@18.2.0)
       '@emotion/styled':
         specifier: ^11.11.0
-        version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.12)(react@18.2.0)
+        version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0)
       '@forge/bridge':
         specifier: ^2.6.0
         version: 2.6.0
       '@mui/material':
         specifier: ^5.13.7
-        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.19
         version: 4.29.19(react-dom@18.2.0)(react@18.2.0)
@@ -115,8 +119,8 @@ importers:
         version: link:../../packages/ui
     devDependencies:
       '@types/react':
-        specifier: ^18.0.37
-        version: 18.2.12
+        specifier: ^18.2.15
+        version: 18.2.15
       '@types/react-dom':
         specifier: ^18.0.11
         version: 18.0.11
@@ -176,8 +180,8 @@ importers:
         specifier: ^18.6.0
         version: 18.6.0
       '@types/react':
-        specifier: ^18.2.12
-        version: 18.2.12
+        specifier: ^18.2.15
+        version: 18.2.15
       '@types/uuid':
         specifier: ^9.0.2
         version: 9.0.2
@@ -222,14 +226,14 @@ importers:
         version: 2.6.0
       '@mui/material':
         specifier: ^5.13.7
-        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.19
         version: 4.29.19(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
-        specifier: ^18.0.37
-        version: 18.2.12
+        specifier: ^18.2.15
+        version: 18.2.15
       '@types/react-dom':
         specifier: ^18.0.11
         version: 18.0.11
@@ -258,14 +262,14 @@ importers:
         version: 2.6.0
       '@mui/material':
         specifier: ^5.13.7
-        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
+        version: 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.19
         version: 4.29.19(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
-        specifier: ^18.0.37
-        version: 18.2.12
+        specifier: ^18.2.15
+        version: 18.2.15
       '@types/react-dom':
         specifier: ^18.0.11
         version: 18.0.11
@@ -742,7 +746,7 @@ packages:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
     dev: false
 
-  /@emotion/react@11.11.1(@types/react@18.2.12)(react@18.2.0):
+  /@emotion/react@11.11.1(@types/react@18.2.15)(react@18.2.0):
     resolution: {integrity: sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==}
     peerDependencies:
       '@types/react': '*'
@@ -758,7 +762,7 @@ packages:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
     dev: false
@@ -777,7 +781,7 @@ packages:
     resolution: {integrity: sha512-0QBtGvaqtWi+nx6doRwDdBIzhNdZrXUppvTM4dtZZWEGTXL/XE/yJxLMGlDT1Gt+UHH5IX1n+jkXyytE/av7OA==}
     dev: false
 
-  /@emotion/styled@11.11.0(@emotion/react@11.11.1)(@types/react@18.2.12)(react@18.2.0):
+  /@emotion/styled@11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0):
     resolution: {integrity: sha512-hM5Nnvu9P3midq5aaXj4I+lnSfNi7Pmd4EWk1fOZ3pxookaQTNew6bp4JaCBYM4HVFZF9g7UjJmsUmC2JlxOng==}
     peerDependencies:
       '@emotion/react': ^11.0.0-rc.0
@@ -790,11 +794,11 @@ packages:
       '@babel/runtime': 7.22.6
       '@emotion/babel-plugin': 11.11.0
       '@emotion/is-prop-valid': 1.2.1
-      '@emotion/react': 11.11.1(@types/react@18.2.12)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.15)(react@18.2.0)
       '@emotion/serialize': 1.1.2
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
       react: 18.2.0
     dev: false
 
@@ -1288,6 +1292,26 @@ packages:
       - encoding
     dev: false
 
+  /@forge/api@2.18.1(webpack-bundle-analyzer@4.9.0):
+    resolution: {integrity: sha512-Qf5SKSZSWzSZWoRs01LvsAXTMwwxqpuXPVQ75MAtXMToyPqn/GSlc8O4S2qRnIc0hikh+GzAbpRQWGdOjKqbJg==}
+    dependencies:
+      '@forge/auth': 0.0.2
+      '@forge/egress': 1.2.1
+      '@forge/storage': 1.5.4
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
+      '@types/node-fetch': 2.6.4
+      node-fetch: 2.6.11
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - encoding
+      - esbuild
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
   /@forge/api@2.18.1(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-Qf5SKSZSWzSZWoRs01LvsAXTMwwxqpuXPVQ75MAtXMToyPqn/GSlc8O4S2qRnIc0hikh+GzAbpRQWGdOjKqbJg==}
     dependencies:
@@ -1388,6 +1412,64 @@ packages:
       - webpack-dev-server
     dev: true
 
+  /@forge/bundler@4.10.2(webpack-cli@4.10.0):
+    resolution: {integrity: sha512-yvYUPrNP8BirbqM7BermRIPftTS+Ij0PwNcxYz96ISpB/CaL6WP5O5vEpqPWDRCnl83N4zVlZcJuyVvrNAMeTw==}
+    engines: {node: '>=12.13.1'}
+    dependencies:
+      '@babel/core': 7.22.9
+      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.22.9)
+      '@babel/plugin-proposal-numeric-separator': 7.18.6(@babel/core@7.22.9)
+      '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.22.9)
+      '@babel/plugin-transform-react-jsx': 7.22.5(@babel/core@7.22.9)
+      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.9)
+      '@forge/api': 2.18.1(webpack-bundle-analyzer@4.9.0)
+      '@forge/babel-plugin-transform-ui': 1.1.3
+      '@forge/cli-shared': 3.15.1(webpack-bundle-analyzer@4.9.0)
+      '@forge/lint': 3.6.1(typescript@4.9.5)(webpack-bundle-analyzer@4.9.0)
+      '@forge/runtime': 4.4.3(webpack-bundle-analyzer@4.9.0)
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
+      assert: 1.5.0
+      babel-loader: 8.3.0(@babel/core@7.22.9)(webpack@5.78.0)
+      browserify-zlib: 0.2.0
+      buffer: 4.9.2
+      chalk: 2.4.2
+      console-browserify: 1.2.0
+      crypto-browserify: 3.12.0
+      events: 3.3.0
+      html-webpack-plugin: 5.5.3(webpack@5.78.0)
+      memfs: 3.5.3
+      nock: 10.0.6
+      os-browserify: 0.3.0
+      path-browserify: 1.0.1
+      process: 0.11.10
+      punycode: 1.4.1
+      querystring-browser: 1.0.4
+      readable-stream: 3.6.2
+      string_decoder: 1.3.0
+      text-encoder-lite: 2.0.0
+      timers-browserify: 2.0.12
+      tmp: 0.1.0
+      ts-loader: 9.4.4(typescript@4.9.5)(webpack@5.78.0)
+      typescript: 4.9.5
+      url: 0.11.1
+      util: 0.11.1
+      webpack: 5.78.0(webpack-cli@4.10.0)
+      webpack-bundle-analyzer: 4.9.0
+      whatwg-url: 7.1.0
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - bufferutil
+      - encoding
+      - esbuild
+      - supports-color
+      - uglify-js
+      - utf-8-validate
+      - webpack-cli
+      - webpack-dev-server
+    dev: true
+
   /@forge/bundler@4.10.2(webpack-cli@4.10.0)(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-yvYUPrNP8BirbqM7BermRIPftTS+Ij0PwNcxYz96ISpB/CaL6WP5O5vEpqPWDRCnl83N4zVlZcJuyVvrNAMeTw==}
     engines: {node: '>=12.13.1'}
@@ -1446,11 +1528,105 @@ packages:
       - webpack-dev-server
     dev: true
 
+  /@forge/cli-shared@3.15.0:
+    resolution: {integrity: sha512-R88u+vUwTHxJ9QjRecwQ6chorPkzO6h3YfN5Tr4btZNnNOr20C4axQMaQedZ4wmy+tNgvc7HFZSi29S2Gw/JfA==}
+    dependencies:
+      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
+      '@sentry/node': 7.58.1
+      adm-zip: 0.5.10
+      array.prototype.flatmap: 1.3.1
+      case: 1.6.3
+      chalk: 2.4.2
+      cheerio: 0.22.0
+      cli-table3: 0.6.3
+      conf: 6.2.4
+      cross-spawn: 7.0.3
+      env-paths: 2.2.1
+      figures: 3.2.0
+      fp-ts: 2.16.0
+      fs-extra: 8.1.0
+      get-folder-size: 2.0.1
+      glob: 7.2.3
+      graphql: 15.8.0
+      graphql-request: 3.4.0(graphql@15.8.0)
+      ignore-walk: 3.0.4
+      inquirer: 8.2.5
+      io-ts: 2.2.20(fp-ts@2.16.0)
+      keytar: 7.9.0
+      launchdarkly-node-client-sdk: 2.2.2
+      node-fetch: 2.6.11
+      ora: 4.1.1
+      recursive-readdir: 2.2.3
+      semver: 6.3.1
+      terminal-link: 2.1.1
+      tmp: 0.1.0
+      typescript: 4.9.5
+      yaml: 1.10.2
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - encoding
+      - esbuild
+      - supports-color
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
   /@forge/cli-shared@3.15.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-R88u+vUwTHxJ9QjRecwQ6chorPkzO6h3YfN5Tr4btZNnNOr20C4axQMaQedZ4wmy+tNgvc7HFZSi29S2Gw/JfA==}
     dependencies:
       '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
       '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@sentry/node': 7.58.1
+      adm-zip: 0.5.10
+      array.prototype.flatmap: 1.3.1
+      case: 1.6.3
+      chalk: 2.4.2
+      cheerio: 0.22.0
+      cli-table3: 0.6.3
+      conf: 6.2.4
+      cross-spawn: 7.0.3
+      env-paths: 2.2.1
+      figures: 3.2.0
+      fp-ts: 2.16.0
+      fs-extra: 8.1.0
+      get-folder-size: 2.0.1
+      glob: 7.2.3
+      graphql: 15.8.0
+      graphql-request: 3.4.0(graphql@15.8.0)
+      ignore-walk: 3.0.4
+      inquirer: 8.2.5
+      io-ts: 2.2.20(fp-ts@2.16.0)
+      keytar: 7.9.0
+      launchdarkly-node-client-sdk: 2.2.2
+      node-fetch: 2.6.11
+      ora: 4.1.1
+      recursive-readdir: 2.2.3
+      semver: 6.3.1
+      terminal-link: 2.1.1
+      tmp: 0.1.0
+      typescript: 4.9.5
+      yaml: 1.10.2
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - encoding
+      - esbuild
+      - supports-color
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
+  /@forge/cli-shared@3.15.1(webpack-bundle-analyzer@4.9.0):
+    resolution: {integrity: sha512-NZGLu63dIV3o5iv6w9cQrQt/jq3yq6Q8zLNZWzBKVk/4IkTDzyguZRcpguI7AiOnaDcweutwFuWvfQv6RD7juA==}
+    dependencies:
+      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
       '@sentry/node': 7.58.1
       adm-zip: 0.5.10
       array.prototype.flatmap: 1.3.1
@@ -1546,14 +1722,14 @@ packages:
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@forge/bundler': 4.10.2(webpack-cli@4.10.0)(webpack-dev-server@4.15.1)
-      '@forge/cli-shared': 3.15.1(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/bundler': 4.10.2(webpack-cli@4.10.0)
+      '@forge/cli-shared': 3.15.1(webpack-bundle-analyzer@4.9.0)
       '@forge/egress': 1.2.1
-      '@forge/lint': 3.6.1(typescript@4.9.5)(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
-      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
-      '@forge/runtime': 4.4.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/lint': 3.6.1(typescript@5.1.5)
+      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)
+      '@forge/runtime': 4.4.3(webpack-bundle-analyzer@4.9.0)
       '@forge/tunnel': 3.6.2(webpack-cli@4.10.0)(webpack@5.88.1)
-      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
       '@sentry/node': 7.58.1
       ajv: 6.12.6
       archiver: 5.3.1
@@ -1643,6 +1819,30 @@ packages:
       - webpack-dev-server
     dev: true
 
+  /@forge/lint@3.6.1(typescript@4.9.5)(webpack-bundle-analyzer@4.9.0):
+    resolution: {integrity: sha512-fzc6Rtx2vottfJZEWdlPEp77StRY6o4G4oIopKbo9AABUYZujRqxrrND9QU6AoeM91iIGkRea7Tyc/PASoHC8Q==}
+    dependencies:
+      '@forge/cli-shared': 3.15.1(webpack-bundle-analyzer@4.9.0)
+      '@forge/egress': 1.2.1
+      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@4.9.5)
+      array.prototype.flatmap: 1.3.1
+      atlassian-openapi: 1.0.17
+      cross-spawn: 7.0.3
+      node-fetch: 2.6.11
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - encoding
+      - esbuild
+      - supports-color
+      - typescript
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
   /@forge/lint@3.6.1(typescript@4.9.5)(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-fzc6Rtx2vottfJZEWdlPEp77StRY6o4G4oIopKbo9AABUYZujRqxrrND9QU6AoeM91iIGkRea7Tyc/PASoHC8Q==}
     dependencies:
@@ -1662,6 +1862,52 @@ packages:
       - esbuild
       - supports-color
       - typescript
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
+  /@forge/lint@3.6.1(typescript@5.1.5):
+    resolution: {integrity: sha512-fzc6Rtx2vottfJZEWdlPEp77StRY6o4G4oIopKbo9AABUYZujRqxrrND9QU6AoeM91iIGkRea7Tyc/PASoHC8Q==}
+    dependencies:
+      '@forge/cli-shared': 3.15.1(webpack-bundle-analyzer@4.9.0)
+      '@forge/egress': 1.2.1
+      '@forge/manifest': 4.16.0(webpack-bundle-analyzer@4.9.0)
+      '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.1.5)
+      array.prototype.flatmap: 1.3.1
+      atlassian-openapi: 1.0.17
+      cross-spawn: 7.0.3
+      node-fetch: 2.6.11
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - encoding
+      - esbuild
+      - supports-color
+      - typescript
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
+  /@forge/manifest@4.16.0(webpack-bundle-analyzer@4.9.0):
+    resolution: {integrity: sha512-1i/vQ4OPQpxCDQATzw7BsQ+26F/1O8sbnpgfb4gIMm2E4oHsx3ADU537ka53mWaHY5o0/ioMyT72RfPAielTZA==}
+    dependencies:
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
+      ajv: 6.12.6
+      cheerio: 0.22.0
+      js-yaml: 3.14.1
+      json-schema-to-typescript: 9.1.1
+      lodash: 4.17.21
+      node-fetch: 2.6.11
+      typescript-json-schema: 0.45.1
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - encoding
+      - esbuild
       - uglify-js
       - webpack-bundle-analyzer
       - webpack-dev-server
@@ -1703,11 +1949,63 @@ packages:
       tslib: 2.6.0
     dev: true
 
+  /@forge/runtime@4.4.2:
+    resolution: {integrity: sha512-N7PihsvVuvyLlq24KC0NcggDdJv4bRLtCzPfBztjIvZVoJVYx0iLnvQUwz5K+mEIqL0iQa2zL+Qgrcb2KtZQ6A==}
+    engines: {node: ^14 || ^16 || ^18}
+    dependencies:
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
+      fp-ts: 2.16.0
+      io-ts: 2.2.20(fp-ts@2.16.0)
+      io-ts-reporters: 1.2.2(fp-ts@2.16.0)(io-ts@2.2.20)
+      js-yaml: 3.14.1
+      node-fetch: 2.6.11
+      tslib: 2.6.0
+      uuid: 3.4.0
+      ws: 7.5.9
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - bufferutil
+      - encoding
+      - esbuild
+      - uglify-js
+      - utf-8-validate
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
   /@forge/runtime@4.4.2(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-N7PihsvVuvyLlq24KC0NcggDdJv4bRLtCzPfBztjIvZVoJVYx0iLnvQUwz5K+mEIqL0iQa2zL+Qgrcb2KtZQ6A==}
     engines: {node: ^14 || ^16 || ^18}
     dependencies:
       '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      fp-ts: 2.16.0
+      io-ts: 2.2.20(fp-ts@2.16.0)
+      io-ts-reporters: 1.2.2(fp-ts@2.16.0)(io-ts@2.2.20)
+      js-yaml: 3.14.1
+      node-fetch: 2.6.11
+      tslib: 2.6.0
+      uuid: 3.4.0
+      ws: 7.5.9
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - bufferutil
+      - encoding
+      - esbuild
+      - uglify-js
+      - utf-8-validate
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
+  /@forge/runtime@4.4.3(webpack-bundle-analyzer@4.9.0):
+    resolution: {integrity: sha512-lxc68nY+UGAJ+GewDRo/QFiaZjxdypRmGMPreS4cyD67Btq+XvRIOe1awtanegy6ryzNux0T0XknIS74mVLBHQ==}
+    engines: {node: ^14 || ^16 || ^18}
+    dependencies:
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
       fp-ts: 2.16.0
       io-ts: 2.2.20(fp-ts@2.16.0)
       io-ts-reporters: 1.2.2(fp-ts@2.16.0)(io-ts@2.2.20)
@@ -1759,12 +2057,12 @@ packages:
     resolution: {integrity: sha512-J9ubFWGQOk+Q1rIgJCmWsqchbhhMN3LILzcA2bBHpi3Ih7QOE+nWGTe6U2pFyhO2I5EkkiMJ9vlbI+ikAMj6LQ==}
     engines: {node: ^14 || ^16 || ^18}
     dependencies:
-      '@forge/api': 2.18.1(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/api': 2.18.1(webpack-bundle-analyzer@4.9.0)
       '@forge/egress': 1.2.1
       '@forge/isolated-vm': 4.1.1
-      '@forge/runtime': 4.4.2(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/runtime': 4.4.2
       '@forge/runtime-bootstrap': 1.7.0
-      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/util': 1.2.3(webpack-bundle-analyzer@4.9.0)
       fetch-wrap: 0.0.12
       ip: 1.1.8
       node-fetch: 2.6.11
@@ -1788,8 +2086,8 @@ packages:
     resolution: {integrity: sha512-hIB5voiWPIFMUUW2N1JQ09PnziZ0IWICUA2sJdsfLtPVywOIo4p29ljt6zZyLaAMrlcOBJ+43NbTQNDEwhgbgg==}
     hasBin: true
     dependencies:
-      '@forge/cli-shared': 3.15.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
-      '@forge/runtime': 4.4.2(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)
+      '@forge/cli-shared': 3.15.0
+      '@forge/runtime': 4.4.2
       '@forge/sandbox-runtime': 4.4.2
       '@forge/tunnel': 3.6.1(webpack-cli@4.10.0)(webpack@5.88.1)
       tslib: 2.6.0
@@ -1894,6 +2192,21 @@ packages:
       tslib: 2.6.0
     dev: false
 
+  /@forge/util@1.2.3(webpack-bundle-analyzer@4.9.0):
+    resolution: {integrity: sha512-VijL/4LX4WHYMkfynU+5mfS2LvqUy3FU8zWEMwXQ31rPglKrpK/5+pTKUjjCEsCTjMA2jDqXUyLYads+pRl8dw==}
+    dependencies:
+      webpack: 5.78.0(webpack-cli@4.10.0)
+      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack@5.78.0)
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@webpack-cli/generators'
+      - '@webpack-cli/migrate'
+      - esbuild
+      - uglify-js
+      - webpack-bundle-analyzer
+      - webpack-dev-server
+    dev: true
+
   /@forge/util@1.2.3(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1):
     resolution: {integrity: sha512-VijL/4LX4WHYMkfynU+5mfS2LvqUy3FU8zWEMwXQ31rPglKrpK/5+pTKUjjCEsCTjMA2jDqXUyLYads+pRl8dw==}
     dependencies:
@@ -1988,7 +2301,7 @@ packages:
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
     dev: false
 
-  /@mui/base@5.0.0-beta.6(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/base@5.0.0-beta.6(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-jcHy6HwOX7KzRhRtL8nvIvUlxvLx2Fl6NMRCyUSQSvMTyfou9kndekz0H4HJaXvG1Y4WEifk23RYedOlrD1kEQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -2001,10 +2314,10 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.6
       '@emotion/is-prop-valid': 1.2.1
-      '@mui/types': 7.2.4(@types/react@18.2.12)
+      '@mui/types': 7.2.4(@types/react@18.2.15)
       '@mui/utils': 5.13.7(react@18.2.0)
       '@popperjs/core': 2.11.8
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
       clsx: 1.2.1
       prop-types: 15.8.1
       react: 18.2.0
@@ -2016,7 +2329,7 @@ packages:
     resolution: {integrity: sha512-SYBOVCatVDUf/lbrLGah09bHhX5WfUXg7kSskfLILr6SvKRni0NLp0aonxQ0SMALVVK3Qwa6cW4CdWuwS0gC1w==}
     dev: false
 
-  /@mui/icons-material@5.13.7(@mui/material@5.13.7)(@types/react@18.2.12)(react@18.2.0):
+  /@mui/icons-material@5.13.7(@mui/material@5.13.7)(@types/react@18.2.15)(react@18.2.0):
     resolution: {integrity: sha512-zoVtkb9jYVUGfI7CobOdDBEAlpg3XESiO6cWqSDGwEma69+CBDIAwGpnO5truvQDJHBGSAfzFj3nObwxjkyA7Q==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -2028,12 +2341,12 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.6
-      '@mui/material': 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
-      '@types/react': 18.2.12
+      '@mui/material': 5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react': 18.2.15
       react: 18.2.0
     dev: false
 
-  /@mui/material@5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/material@5.13.7(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-+n453jDDm88zZM3b5YK29nZ7gXY+s+rryH9ovDbhmfSkOlFtp+KSqbXy5cTaC/UlDqDM7sYYJGq8BmJov3v9Tg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -2051,14 +2364,14 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.6
-      '@emotion/react': 11.11.1(@types/react@18.2.12)(react@18.2.0)
-      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.12)(react@18.2.0)
-      '@mui/base': 5.0.0-beta.6(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.15)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0)
+      '@mui/base': 5.0.0-beta.6(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
       '@mui/core-downloads-tracker': 5.14.0
-      '@mui/system': 5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react@18.2.0)
-      '@mui/types': 7.2.4(@types/react@18.2.12)
+      '@mui/system': 5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react@18.2.0)
+      '@mui/types': 7.2.4(@types/react@18.2.15)
       '@mui/utils': 5.13.7(react@18.2.0)
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
       '@types/react-transition-group': 4.4.6
       clsx: 1.2.1
       csstype: 3.1.2
@@ -2069,7 +2382,7 @@ packages:
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@mui/private-theming@5.13.7(@types/react@18.2.12)(react@18.2.0):
+  /@mui/private-theming@5.13.7(@types/react@18.2.15)(react@18.2.0):
     resolution: {integrity: sha512-qbSr+udcij5F9dKhGX7fEdx2drXchq7htLNr2Qg2Ma+WJ6q0ERlEqGSBiPiVDJkptcjeVL4DGmcf1wl5+vD4EA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -2081,7 +2394,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.6
       '@mui/utils': 5.13.7(react@18.2.0)
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
@@ -2101,14 +2414,14 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.6
       '@emotion/cache': 11.11.0
-      '@emotion/react': 11.11.1(@types/react@18.2.12)(react@18.2.0)
-      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.12)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.15)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0)
       csstype: 3.1.2
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@mui/system@5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.12)(react@18.2.0):
+  /@mui/system@5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.15)(react@18.2.0):
     resolution: {integrity: sha512-0HZGkX8miJbiNw+rjlZ9l0Cfkz1bSqfSHQH0EH9J+nx0aAm5cBleg9piOlLdCNIWGgecCqsw4x62erGrGjjcJg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -2125,20 +2438,20 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.6
-      '@emotion/react': 11.11.1(@types/react@18.2.12)(react@18.2.0)
-      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.12)(react@18.2.0)
-      '@mui/private-theming': 5.13.7(@types/react@18.2.12)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.15)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.15)(react@18.2.0)
+      '@mui/private-theming': 5.13.7(@types/react@18.2.15)(react@18.2.0)
       '@mui/styled-engine': 5.13.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(react@18.2.0)
-      '@mui/types': 7.2.4(@types/react@18.2.12)
+      '@mui/types': 7.2.4(@types/react@18.2.15)
       '@mui/utils': 5.13.7(react@18.2.0)
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
       clsx: 1.2.1
       csstype: 3.1.2
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@mui/types@7.2.4(@types/react@18.2.12):
+  /@mui/types@7.2.4(@types/react@18.2.15):
     resolution: {integrity: sha512-LBcwa8rN84bKF+f5sDyku42w1NTxaPgPyYKODsh01U1fVstTClbUoSA96oyRBnSNyEiAVjKm6Gwx9vjR+xyqHA==}
     peerDependencies:
       '@types/react': '*'
@@ -2146,7 +2459,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
     dev: false
 
   /@mui/utils@5.13.7(react@18.2.0):
@@ -2546,23 +2859,23 @@ packages:
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
     dev: true
 
   /@types/react-is@18.2.1:
     resolution: {integrity: sha512-wyUkmaaSZEzFZivD8F2ftSyAfk6L+DfFliVj/mYdOXbVjRcS87fQJLTnhk6dRZPuJjI+9g6RZJO4PNCngUrmyw==}
     dependencies:
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
     dev: false
 
   /@types/react-transition-group@4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
     dependencies:
-      '@types/react': 18.2.12
+      '@types/react': 18.2.15
     dev: false
 
-  /@types/react@18.2.12:
-    resolution: {integrity: sha512-ndmBMLCgn38v3SntMeoJaIrO6tGHYKMEBohCUmw8HoLLQdRMOIGXfeYaBTLe2lsFaSB3MOK1VXscYFnmLtTSmw==}
+  /@types/react@18.2.15:
+    resolution: {integrity: sha512-oEjE7TQt1fFTFSbf8kkNuc798ahTUzn3Le67/PWjE8MAfYAD/qB7O8hSTcromLFqHCt9bcdOg5GXMokzTjJ5SA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -2748,6 +3061,27 @@ packages:
       semver: 7.5.4
       tsutils: 3.21.0(typescript@4.9.5)
       typescript: 4.9.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@typescript-eslint/typescript-estree@5.62.0(typescript@5.1.5):
+    resolution: {integrity: sha512-CmcQ6uY7b9y694lKdRB8FEel7JbU/40iSAPomu++SjLMntB+2Leay2LO6i8VnJk58MtE9/nQSFIH6jpyRWyYzA==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/types': 5.62.0
+      '@typescript-eslint/visitor-keys': 5.62.0
+      debug: 4.3.4
+      globby: 11.1.0
+      is-glob: 4.0.3
+      semver: 7.5.4
+      tsutils: 3.21.0(typescript@5.1.5)
+      typescript: 5.1.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3016,7 +3350,17 @@ packages:
       webpack-cli: 4.x.x
     dependencies:
       webpack: 5.78.0(webpack-cli@4.10.0)
-      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)(webpack@5.78.0)
+      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack@5.78.0)
+    dev: true
+
+  /@webpack-cli/configtest@1.2.0(webpack-cli@4.10.0)(webpack@5.88.1):
+    resolution: {integrity: sha512-4FB8Tj6xyVkyqjj1OaTqCjXYULB9FMkqQ8yGrZjRDrYh0nOE+7Lhs45WioWQQMV+ceFlE368Ukhe6xdvJM9Egg==}
+    peerDependencies:
+      webpack: 4.x.x || 5.x.x
+      webpack-cli: 4.x.x
+    dependencies:
+      webpack: 5.88.1(webpack-cli@4.10.0)
+      webpack-cli: 4.10.0(webpack@5.88.1)
     dev: true
 
   /@webpack-cli/info@1.5.0(webpack-cli@4.10.0):
@@ -3025,7 +3369,19 @@ packages:
       webpack-cli: 4.x.x
     dependencies:
       envinfo: 7.10.0
-      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)(webpack@5.78.0)
+      webpack-cli: 4.10.0(webpack@5.88.1)
+    dev: true
+
+  /@webpack-cli/serve@1.7.0(webpack-cli@4.10.0):
+    resolution: {integrity: sha512-oxnCNGj88fL+xzV+dacXs44HcDwf1ovs3AuEzvP7mqXw7fQntqIhQ1BRmynh4qEKQSSSRSWVyXRjmTbZIX9V2Q==}
+    peerDependencies:
+      webpack-cli: 4.x.x
+      webpack-dev-server: '*'
+    peerDependenciesMeta:
+      webpack-dev-server:
+        optional: true
+    dependencies:
+      webpack-cli: 4.10.0(webpack@5.88.1)
     dev: true
 
   /@webpack-cli/serve@1.7.0(webpack-cli@4.10.0)(webpack-dev-server@4.15.1):
@@ -8358,6 +8714,16 @@ packages:
       typescript: 4.9.5
     dev: true
 
+  /tsutils@3.21.0(typescript@5.1.5):
+    resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
+    engines: {node: '>= 6'}
+    peerDependencies:
+      typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
+    dependencies:
+      tslib: 1.14.1
+      typescript: 5.1.5
+    dev: true
+
   /tsutils@3.21.0(typescript@5.1.6):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -8773,6 +9139,77 @@ packages:
       webpack-merge: 5.9.0
     dev: true
 
+  /webpack-cli@4.10.0(webpack-bundle-analyzer@4.9.0)(webpack@5.78.0):
+    resolution: {integrity: sha512-NLhDfH/h4O6UOy+0LSso42xvYypClINuMNBVVzX4vX98TmTaTUxwRbXdhucbFMd2qLaCTcLq/PdYrvi8onw90w==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    peerDependencies:
+      '@webpack-cli/generators': '*'
+      '@webpack-cli/migrate': '*'
+      webpack: 4.x.x || 5.x.x
+      webpack-bundle-analyzer: '*'
+      webpack-dev-server: '*'
+    peerDependenciesMeta:
+      '@webpack-cli/generators':
+        optional: true
+      '@webpack-cli/migrate':
+        optional: true
+      webpack-bundle-analyzer:
+        optional: true
+      webpack-dev-server:
+        optional: true
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      '@webpack-cli/configtest': 1.2.0(webpack-cli@4.10.0)(webpack@5.78.0)
+      '@webpack-cli/info': 1.5.0(webpack-cli@4.10.0)
+      '@webpack-cli/serve': 1.7.0(webpack-cli@4.10.0)
+      colorette: 2.0.20
+      commander: 7.2.0
+      cross-spawn: 7.0.3
+      fastest-levenshtein: 1.0.16
+      import-local: 3.1.0
+      interpret: 2.2.0
+      rechoir: 0.7.1
+      webpack: 5.78.0(webpack-cli@4.10.0)
+      webpack-bundle-analyzer: 4.9.0
+      webpack-merge: 5.9.0
+    dev: true
+
+  /webpack-cli@4.10.0(webpack@5.88.1):
+    resolution: {integrity: sha512-NLhDfH/h4O6UOy+0LSso42xvYypClINuMNBVVzX4vX98TmTaTUxwRbXdhucbFMd2qLaCTcLq/PdYrvi8onw90w==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    peerDependencies:
+      '@webpack-cli/generators': '*'
+      '@webpack-cli/migrate': '*'
+      webpack: 4.x.x || 5.x.x
+      webpack-bundle-analyzer: '*'
+      webpack-dev-server: '*'
+    peerDependenciesMeta:
+      '@webpack-cli/generators':
+        optional: true
+      '@webpack-cli/migrate':
+        optional: true
+      webpack-bundle-analyzer:
+        optional: true
+      webpack-dev-server:
+        optional: true
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      '@webpack-cli/configtest': 1.2.0(webpack-cli@4.10.0)(webpack@5.88.1)
+      '@webpack-cli/info': 1.5.0(webpack-cli@4.10.0)
+      '@webpack-cli/serve': 1.7.0(webpack-cli@4.10.0)
+      colorette: 2.0.20
+      commander: 7.2.0
+      cross-spawn: 7.0.3
+      fastest-levenshtein: 1.0.16
+      import-local: 3.1.0
+      interpret: 2.2.0
+      rechoir: 0.7.1
+      webpack: 5.88.1(webpack-cli@4.10.0)
+      webpack-merge: 5.9.0
+    dev: true
+
   /webpack-dev-middleware@5.3.3(webpack@5.88.1):
     resolution: {integrity: sha512-hj5CYrY0bZLB+eTO+x/j67Pkrquiy7kWepMHmUMoPsmcUaeEnQJqFzHJOyxgWlq746/wUuA64p9ta34Kyb01pA==}
     engines: {node: '>= 12.13.0'}
@@ -8829,7 +9266,7 @@ packages:
       sockjs: 0.3.24
       spdy: 4.0.2
       webpack: 5.88.1(webpack-cli@4.10.0)
-      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)(webpack@5.78.0)
+      webpack-cli: 4.10.0(webpack@5.88.1)
       webpack-dev-middleware: 5.3.3(webpack@5.88.1)
       ws: 8.13.0
     transitivePeerDependencies:
@@ -8885,7 +9322,7 @@ packages:
       tapable: 2.2.1
       terser-webpack-plugin: 5.3.9(webpack@5.78.0)
       watchpack: 2.4.0
-      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)(webpack@5.78.0)
+      webpack-cli: 4.10.0(webpack@5.88.1)
       webpack-sources: 3.2.3
     transitivePeerDependencies:
       - '@swc/core'
@@ -8926,7 +9363,7 @@ packages:
       tapable: 2.2.1
       terser-webpack-plugin: 5.3.9(webpack@5.88.1)
       watchpack: 2.4.0
-      webpack-cli: 4.10.0(webpack-bundle-analyzer@4.9.0)(webpack-dev-server@4.15.1)(webpack@5.78.0)
+      webpack-cli: 4.10.0(webpack@5.88.1)
       webpack-sources: 3.2.3
     transitivePeerDependencies:
       - '@swc/core'
@@ -9113,7 +9550,3 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.2
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
