@@ -1,12 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-import { view } from '@forge/bridge';
+import { useContext } from './useContext';
 
 type AppUrls = {
   configure: string;
   getStarted: string;
 };
-
-export const useContext = () => useQuery(['context'], () => view.getContext());
 
 export const useContextURL = (): AppUrls | null => {
   const context = useContext();
