@@ -2,7 +2,7 @@ import './App.css';
 
 import { ThemeProvider } from '@emotion/react';
 import { styled } from '@mui/material/styles';
-import { AtlassianTheme, Link, Button, useContextURL } from 'ui';
+import { AtlassianTheme, Button, Link, useContextURL } from 'ui';
 
 const InfoBox = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.grey[400],
@@ -20,7 +20,6 @@ const ButtonBox = styled('div')(({ theme }) => ({
 }));
 
 function App() {
-
   const appUrls = useContextURL();
   return (
     <>
@@ -48,34 +47,22 @@ function App() {
               </p>
               <p>
                 Support:&nbsp;
-                <Link
-                  href='https://support.circleci.com/hc/en-us/requests/new?ticket_form_id=855268'
-                >
+                <Link href='https://support.circleci.com/hc/en-us/requests/new?ticket_form_id=855268'>
                   Submit a ticket
                 </Link>
               </p>
               <p>
                 Submit bugs:&nbsp;
-                <Link href='https://github.com/CircleCI-Public/circleci-for-jira'>
-                  Github
-                </Link>
+                <Link href='https://github.com/CircleCI-Public/circleci-for-jira'>Github</Link>
               </p>
             </InfoBox>
           </section>
           <section>
             <ButtonBox>
-              <Button
-                variant='contained'
-                color='primary'
-                href={appUrls?.getStarted}
-              >
+              <Button variant='contained' color='primary' href={appUrls?.getStarted}>
                 Get Started
               </Button>
-              <Button
-                variant='contained'
-                color='secondary'
-                href={appUrls?.configure}
-              >
+              <Button variant='contained' color='secondary' href={appUrls?.configure}>
                 Configure
               </Button>
             </ButtonBox>
