@@ -15,8 +15,8 @@ const InfoBox = styled('div')(({ theme }) => ({
 const ButtonBox = styled('div')(({ theme }) => ({
   margin: theme.spacing(2),
   '& > a': {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 }));
 
@@ -60,10 +60,7 @@ function App() {
           </section>
           <section>
             <ButtonBox>
-              <Button variant='contained' color='primary' href={appUrls?.getStarted}>
-                Get Started
-              </Button>
-              <Button variant='contained' color='secondary' href={appUrls?.configure}>
+              <Button variant='contained' color='primary' href={appUrls?.configure}>
                 Configure
               </Button>
             </ButtonBox>
