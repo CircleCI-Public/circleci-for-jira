@@ -4,7 +4,7 @@ const AtlassianTheme = createTheme({
   palette: {
     primary: {
       main: '#0052CC',
-      dark: '#172B4D',
+      dark: '#0065FF',
       contrastText: '#FFFFFF',
     },
     secondary: {
