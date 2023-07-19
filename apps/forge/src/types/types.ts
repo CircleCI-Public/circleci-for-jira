@@ -132,3 +132,16 @@ export interface SetStorageValuePayload {
   storageKey: string;
   storageValue: unknown;
 }
+
+export interface CircleCiTokenPayload {
+  aud: string
+  exp: number
+  iat: number
+  iss: string
+  "oidc.circleci.com/context-ids": string[]
+  "oidc.circleci.com/project-id": string
+  "oidc.circleci.com/ssh-rerun": boolean
+  "oidc.circleci.com/vcs-origin": string
+  "oidc.circleci.com/vcs-ref": string
+  sub: string
+}

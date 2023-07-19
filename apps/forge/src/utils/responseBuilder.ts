@@ -11,11 +11,10 @@ export function buildResponse(body: object | string, statusCode: number): WebTri
 
 export function buildErrorResponse(error: Error, requestId: string): WebTriggerResponse {
   // If it is a known error, fetch the status code from the error.
-  // If it is a third party error, map it to the proper status code.
   // Otherwise, default to 500.
   const statusCode = isKnownError(error, Errors)
     ? (error as Errors.WebTriggerErrorResponse).statusCode
-    : Errors.getThirdPartyErrorMap().get(error.constructor) ?? 500;
+    : 500;
 
   return buildResponse(
     {
