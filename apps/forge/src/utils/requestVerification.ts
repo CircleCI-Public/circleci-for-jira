@@ -4,7 +4,7 @@ import { decode, verify } from 'jws';
 
 import { STORAGE_KEY } from '../constants/storage';
 import * as Errors from '../types/errors';
-import { CircleCiTokenPayload, JWKS, UserConfiguration, WebTriggerRequest } from '../types/types';
+import { CircleCITokenPayload, JWKS, UserConfiguration, WebTriggerRequest } from '../types/types';
 import { isBuildPayload, isDeploymentPayload } from './payloadUtils';
 
 export function verifyBody(request: WebTriggerRequest): void {
@@ -41,7 +41,7 @@ export async function verifyAuth(request: WebTriggerRequest): Promise<void> {
   const isTokenSignatureValid = verify(token, 'RS256', pem);
   if (!isTokenSignatureValid) throw new Errors.InvalidTokenSignatureError();
 
-  const tokenPayload = decodedToken?.payload as CircleCiTokenPayload;
+  const tokenPayload = decodedToken?.payload as CircleCITokenPayload;
   if (tokenPayload === undefined) throw new Errors.EmptyTokenPayloadError();
 
   const tokenExpiration = tokenPayload.exp ?? 0;

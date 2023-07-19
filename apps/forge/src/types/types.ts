@@ -133,7 +133,7 @@ export interface SetStorageValuePayload {
   storageValue: unknown;
 }
 
-export interface CircleCiTokenPayload {
+export interface CircleCITokenPayload {
   aud: string
   exp: number
   iat: number
