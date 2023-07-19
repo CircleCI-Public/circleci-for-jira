@@ -1,5 +1,3 @@
-import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
-
 export class WebTriggerErrorResponse extends Error {
   statusCode: number;
   constructor(message: string, statusCode: number) {
@@ -73,10 +71,38 @@ export class MissingJwtAudienceError extends WebTriggerErrorResponse {
   }
 }
 
-export class InvalidTokenError extends WebTriggerErrorResponse {
+export class InvalidTokenSignatureError extends WebTriggerErrorResponse {
   constructor() {
-    super('Invalid request. JWT is invalid.', 401);
-    this.name = 'InvalidTokenError';
+    super('Invalid token signature. The token provided cannot be verified.', 401);
+    this.name = 'InvalidTokenSignatureError';
+  }
+}
+
+export class EmptyTokenPayloadError extends WebTriggerErrorResponse {
+  constructor() {
+    super('Invalid token payload. The token provided has an empty or unexpected payload.', 401);
+    this.name = 'EmptyTokenPayloadError';
+  }
+}
+
+export class TokenExpiredError extends WebTriggerErrorResponse {
+  constructor() {
+    super('The token provided has expired.', 401);
+    this.name = 'TokenExpiredError';
+  }
+}
+
+export class InvalidTokenIssuerError extends WebTriggerErrorResponse {
+  constructor() {
+    super('The token provided has an invalid issuer.', 401);
+    this.name = 'InvalidTokenIssuerError';
+  }
+}
+
+export class InvalidTokenAudienceError extends WebTriggerErrorResponse {
+  constructor() {
+    super('The token provided has an invalid audience.', 401);
+    this.name = 'InvalidTokenAudienceError';
   }
 }
 
@@ -92,11 +118,4 @@ export class FailedToFindJwkError extends WebTriggerErrorResponse {
     super(`Failed to find JWK with kid "${kid}" in JWKS.`, 401);
     this.name = 'FailedToFindJwkError';
   }
-}
-
-export function getThirdPartyErrorMap(): Map<unknown, number> {
-  return new Map<unknown, number>([
-    [TokenExpiredError, 401],
-    [JsonWebTokenError, 401],
-  ]);
 }
