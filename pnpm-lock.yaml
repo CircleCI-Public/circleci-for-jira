@@ -217,8 +217,8 @@ importers:
         specifier: ^0.2.17
         version: 0.2.17
       eslint-plugin-turbo:
-        specifier: ^1.10.8
-        version: 1.10.8(eslint@8.45.0)
+        specifier: ^1.10.9
+        version: 1.10.9(eslint@8.45.0)
 
   packages/hooks:
     dependencies:
@@ -4357,8 +4357,8 @@ packages:
       '@microsoft/tsdoc-config': 0.16.2
     dev: false
 
-  /eslint-plugin-turbo@1.10.8(eslint@8.45.0):
-    resolution: {integrity: sha512-0ULCoR0Zj/ec4mjmfeYhDa5OtqCvSgDkQdSD/tqLUSHM0GzcUrNvGPclVmsoCb5kmawzeqtlqnS2FKILc862qw==}
+  /eslint-plugin-turbo@1.10.9(eslint@8.45.0):
+    resolution: {integrity: sha512-o8Nga4WFMvzF0lo3d3UyjGli2JOUn/4SRtRdvcf4EA9/TPotU/NUHqO16Cp0SHZJG/tGYIy5LY1O/EO7Mxbd1A==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
