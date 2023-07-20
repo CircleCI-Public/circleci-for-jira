@@ -54,7 +54,7 @@ function App() {
               </p>
               <p>
                 Submit bugs:&nbsp;
-                <Link href='https://github.com/CircleCI-Public/circleci-for-jira'>Github</Link>
+                <Link href='https://github.com/CircleCI-Public/circleci-for-jira'>GitHub</Link>
               </p>
             </InfoBox>
           </section>
