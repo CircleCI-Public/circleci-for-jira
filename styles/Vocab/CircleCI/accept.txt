@@ -1,0 +1,6 @@
+CircleCI
+Jira
+pnpm
+Atlassian
+Repo
+MIT

@@ -6,4 +6,6 @@ orbs:
 workflows:
   lint:
     jobs:
-      - vale/lint
+      - vale/lint:
+          glob: '*/README.md'
+          base_dir: '../project'
