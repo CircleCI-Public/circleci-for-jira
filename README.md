@@ -40,12 +40,7 @@ Then proceed according to your role:
 
 ### CircleCI's Customer & Partner Engineering Team
 
-If you're part of CircleCI's Customer & Partner Engineering team, follow these steps:
-
-- Log into [Atlassian](https://id.atlassian.com/manage/api-tokens) using the `cpe-atlassian-dev` credentials and create a token for yourself.
-- Log into the Forge CLI with your new token as detailed [here](https://developer.atlassian.com/platform/forge/getting-started/#log-in-with-an-atlassian-api-token).
-- Deploy the app to the development environment with `pnpm -w run deploy:development`.
-- Run `forge install` and follow the prompts to install the `circleci-for-jira` app. You should now see the app on the "Manage your apps" page.
+If you're part of CircleCI's Customer & Partner Engineering team, please follow the internal instructions documented on our Confluence page. This should guide you through the setup and deployment process.
 
 ### Open Source Community
 
