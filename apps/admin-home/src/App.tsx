@@ -26,7 +26,6 @@ function App() {
     <>
       <ThemeProvider theme={AtlassianTheme}>
         <div className='App'>
-          <h1>CircleCI For Jira</h1>
           <section>
             <InfoBox>
               <p>
@@ -39,7 +38,7 @@ function App() {
                   href='https://marketplace.atlassian.com/apps/1215946/circleci-for-jira'
                   target='_blank'
                 >
-                  CircleCI For Jira
+                  CircleCI for Jira
                 </Link>
               </p>
               <p>
