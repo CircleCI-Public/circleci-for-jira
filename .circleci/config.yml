@@ -1,11 +1,10 @@
 version: 2.1
 
 orbs:
-  vale: circleci/vale@1.0.0
+  vale: circleci/vale@1.0.1
 
 workflows:
   lint:
     jobs:
       - vale/lint:
           glob: '*/README.md'
-          base_dir: '../project'
