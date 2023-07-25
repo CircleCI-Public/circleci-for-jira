@@ -15,7 +15,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@forge/bridge": "^2.6.0",
-    "@mui/material": "^5.14.0",
+    "@mui/material": "^5.14.2",
     "@tanstack/react-query": "^4.29.25",
     "hooks": "workspace:*",
     "react": "^18.2.0",
