@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@forge/bridge": "^2.6.0",
-    "@mui/material": "^5.14.0",
+    "@mui/material": "^5.14.12",
     "@tanstack/react-query": "^4.29.25"
   },
   "devDependencies": {
