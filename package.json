@@ -15,11 +15,14 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "eslint": "^8.45.0",
-    "prettier": "^2.8.8",
-    "turbo": "^1.10.8"
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "turbo": "^2.4.4"
   },
-  "packageManager": "pnpm@8.6.5",
+  "packageManager": "pnpm@10.6.5",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "pnpm": {
     "overrides": {
       "@mui/material": "^5.13.7",

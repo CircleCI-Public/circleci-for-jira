@@ -29,5 +29,21 @@ export async function setStorageValue({ payload, context }: { payload: any; cont
     return { error: errorMessage };
   }
 
-  await storage.set(storageKey, storageValue);
+
+
+  // Type narrowing before using storage.set
+  if (
+    typeof storageValue === 'string' || 
+    typeof storageValue === 'number' || 
+    typeof storageValue === 'boolean' ||
+    Array.isArray(storageValue) ||
+    (storageValue !== null && typeof storageValue === 'object')
+  ) {
+    await storage.set(storageKey, storageValue);
+    return { success: true };
+  } else {
+    const errorMessage = 'Invalid storage value type';
+    printError(errorMessage);
+    return { error: errorMessage };
+  }
 }
