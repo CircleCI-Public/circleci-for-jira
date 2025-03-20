@@ -43,6 +43,13 @@ Then, follow the next steps based on your role:
 
 Refer to the steps defined in the internal Confluence document.
 
+### Common Issues
+
+1. For unsuccessful `forge deploy`, run `forge deploy --no-verify` if everything is good except for 2 acceptable errors...
+     - `invalid value 'devops:deploymentInfoProvider' in modules`
+     - `invalid value 'devops:buildInfoProvider' in modules` 
+    
+
 ## Project structure
 
 The project divides into two main parts:
