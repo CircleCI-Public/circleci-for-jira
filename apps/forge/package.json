@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@forge/cli": "^6.15.0",
+    "@forge/cli": "^11.5.0",
     "@forge/sandbox-tunnel": "^3.1.3",
     "@types/jwk-to-pem": "^2.0.1",
     "@types/jws": "^3.2.5",
@@ -19,7 +19,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@forge/api": "^2.18.2",
+    "@forge/api": "^4.1.0",
     "@forge/resolver": "^1.5.12",
     "@forge/ui": "^1.9.1",
     "jwk-to-pem": "^2.0.5",

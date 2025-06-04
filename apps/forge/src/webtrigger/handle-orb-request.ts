@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-
+import { __requestAtlassianAsApp } from "@forge/api"
 import {
   ForgeTriggerContext,
   LoggingLevel,
@@ -27,9 +27,7 @@ export async function handleOrbRequest(
     const payload: unknown = JSON.parse(request.body);
     const eventType = resolveEventType(payload);
     const endpoint = `/jira/${eventType}/0.1/cloud/${cloudId}/bulk`;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore: required so that Typescript doesn't complain about the missing "api" property
-    const response = await global.api.asApp().__requestAtlassian(endpoint, {
+    const response = await __requestAtlassianAsApp(`/jira/${eventType}/0.1/cloud/${cloudId}/bulk`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
