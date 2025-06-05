@@ -24,7 +24,7 @@
     "overrides": {
       "@mui/material": "^5.13.7",
       "@tanstack/react-query": "^4.29.19",
-      "@forge/bridge": "^2.6.0",
+      "@forge/bridge": "^4.5.3",
       "nth-check": "^2.1.1"
     }
   },
