@@ -16,6 +16,8 @@ modules:
   webtrigger:
     - key: orb-webtrigger
       function: handle-orb-request
+      response:
+        type: dynamic
   devops:deploymentInfoProvider:
     - key: deployment-info-provider
       homeUrl: https://github.com/CircleCI-Public/circleci-for-jira
@@ -42,16 +44,25 @@ resources:
     path: ../admin-configure/dist
     tunnel:
       port: 3001
+remotes:
+  - key: connect 
+    baseUrl: https://ac-checker-ts.stg.services.atlassian.com
 app:
   id: ari:cloud:ecosystem::app/128227a1-b1f0-4c2b-b7b6-1b32a1afee83
   runtime:
     name: nodejs22.x
     snapshots: false
+  connect:
+    key: circleci.jira
+    remote: connect
 permissions:
   external:
     fetch:
       backend:
         - 'https://oidc.circleci.com/org/*/.well-known/jwks-pub.json'
+        - 'https://ac-checker-ts.stg.services.atlassian.com'
+      client:
+        - 'https://ac-checker-ts.stg.services.atlassian.com'
   content:
     styles:
       - 'unsafe-inline'
