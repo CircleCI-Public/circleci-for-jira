@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { router } from '@forge/bridge';
+import * as React from 'react';
 
 interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
